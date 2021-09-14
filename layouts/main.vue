@@ -2,7 +2,11 @@
 <div class="page">
     <SideNav/>
     <main class="pageMain">
-        <Nuxt/>
+        <div class="pageInner">
+
+            <Nuxt/>
+
+        </div>
     </main>
 </div>
 </template>
@@ -37,6 +41,11 @@ body {
     }
         @include forBreakpoint(map-get($media-queries, 'mobile')) {
         padding: $mobileHeaderDefaultSize $siteMobilePadding 0;
+    }
+    .pageInner {
+        widows: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
     }
 }
 </style>

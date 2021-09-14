@@ -4,7 +4,7 @@
     <HomeSection id="portfolio"
     :title="'Portfolio'"
     :body="'Browse my favourite personal projects.'">
-      ff
+      <HomePortfolio/>
     </HomeSection>
     <!-- Libraries -->
     <HomeSection id="libraries"
