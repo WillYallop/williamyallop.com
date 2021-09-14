@@ -31,12 +31,12 @@ body {
     padding: 0;
 }
 .pageMain {
-    padding: $siteDefaultPadding $siteDefaultPadding $siteDefaultPadding 400px + $siteDefaultPadding;
+    padding: 0 $siteDefaultPadding 0 400px + $siteDefaultPadding;
     @include forBreakpoint(map-get($media-queries, 'mobile-tablet')) {
-        padding: $mobileHeaderDefaultSize + $siteTabletPadding $siteTabletPadding $siteTabletPadding;
+        padding: $mobileHeaderDefaultSize $siteTabletPadding 0;
     }
         @include forBreakpoint(map-get($media-queries, 'mobile')) {
-        padding: $mobileHeaderDefaultSize + $siteMobilePadding $siteMobilePadding $siteMobilePadding;
+        padding: $mobileHeaderDefaultSize $siteMobilePadding 0;
     }
 }
 </style>

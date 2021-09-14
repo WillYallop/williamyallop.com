@@ -67,6 +67,7 @@ export default {
     overflow-y: auto;
     width: 400px;
     transition: 0.3s;
+    z-index: 4;
     @include forBreakpoint(map-get($media-queries, 'mobile-tablet')) {
         width: 100%;
         left: -100%;

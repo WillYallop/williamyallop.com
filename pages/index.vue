@@ -1,9 +1,24 @@
 <template>
-<div>
-  <h1 class="typograpy-h1">Portfolio</h1>
-  <p class="body">Browse my favourite personal projects.</p>
-  <div class="test"></div>
-</div>
+  <div class="test">
+    <!-- Portfolio -->
+    <HomeSection id="portfolio"
+    :title="'Portfolio'"
+    :body="'Browse my favourite personal projects.'">
+      ff
+    </HomeSection>
+    <!-- Libraries -->
+    <HomeSection id="libraries"
+    :title="'Libraries'"
+    :body="'Here are some libraries ive created.'">
+      ff
+    </HomeSection>
+    <!-- Contact -->
+    <HomeSection id="contact"
+    :title="'Contact'"
+    :body="'Got a question or something on your mind?'">
+      ff
+    </HomeSection>
+  </div>
 </template>
 
 <script>
@@ -19,6 +34,6 @@ export default {
 
 <style lang="scss" scoped>
 .test {
-  height: 200vh;
+  height: 1000px;
 }
 </style>
