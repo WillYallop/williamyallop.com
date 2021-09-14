@@ -1,0 +1,31 @@
+// Gradients
+@mixin gradientAnimation {
+    background: $gradient;
+    background-size: 400% 400%;
+    animation: GradientAnimation 30s ease infinite;
+
+    @keyframes GradientAnimation {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+}
+@mixin gradientHover {
+    background: $gradientHover;
+}
+
+/* Media Queries */ 
+$media-queries: (
+    'mobile': 'only screen and (max-width: 667px)',
+    'tablet': 'only screen and (min-width: 668px) and (max-width: 1023.9px)',
+    'largeTablet': 'only screen and (max-width: 1300px)',
+    'desktop': 'only screen and (min-width: 1024px)',
+
+
+    'mobile-tablet': 'only screen and (max-width: 667px), only screen and (min-width: 668px) and (max-width: 1023.9px)'
+);
+@mixin forBreakpoint($conditions) {
+    @media #{$conditions} {
+        @content;
+    }
+}

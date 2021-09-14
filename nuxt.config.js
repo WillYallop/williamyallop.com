@@ -15,12 +15,18 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
+      { rel: 'preconnect', href: "https://fonts.googleapis.com" },
+      { rel: 'preconnect', href: "https://fonts.gstatic.com", crossorigin: true },
+      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@300;400&display=swap" },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~scss/_colours.scss',
+    '~scss/_mixins.scss',
+    '~scss/_typography.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -42,6 +48,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/style-resources'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -56,6 +63,10 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
+
+  styleResources: {
+    scss: ['./scss/*.scss']
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
