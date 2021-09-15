@@ -29,3 +29,39 @@ $media-queries: (
         @content;
     }
 }
+
+
+// Buttons
+@mixin btnMain {
+    padding: 15px 40px;
+    background-color: white;
+    font-size: 16px;
+    border-radius: 20px 5px 20px 5px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    &:hover {
+        &::after {
+            width: 80%;
+        }
+    }
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        background-color: $accent1;
+        width: 30%;
+        height: 5px;
+        border-radius: 10px;
+        transition: 0.3s ease-in-out;
+        transition-property: width;
+    }
+}
+.btnMain {
+    @include btnMain;
+}

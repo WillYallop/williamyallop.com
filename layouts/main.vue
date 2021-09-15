@@ -28,6 +28,7 @@ html {
 body {
     background-color: $siteBg;
     min-height: 100%;
+    overflow-x: hidden;
 }
 * {
     box-sizing: border-box;
