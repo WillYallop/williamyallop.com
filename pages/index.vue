@@ -10,7 +10,7 @@
     <HomeSection id="libraries"
     :title="'Libraries'"
     :body="'Here are some libraries ive created.'">
-      ff
+      <HomeLibraries/>
     </HomeSection>
     <!-- Contact -->
     <HomeSection id="contact"

@@ -31,7 +31,6 @@ export default {
 .sectionCon {
     width: 100%;
     position: relative;
-    min-height: 500px;
     padding-top: $siteDefaultPadding;
     .sectionHeader {
         width: 100%;
