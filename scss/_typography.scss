@@ -20,6 +20,8 @@ $bodyColour: #B1B1B1;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     color: $titleColour;
+    font-size: 18px;
+    line-height: 26px;
 }
 
 @mixin title {

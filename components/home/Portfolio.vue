@@ -34,8 +34,8 @@ export default {
                         href: '',
                         images: {
                             alt: '',
-                            desktop: require('@/images/projects/bassDesktop.png'),
-                            mobile: require('@/images/projects/bassMobile.png')
+                            desktop: require('@/images/projects/playlistCoverMakerDesktop.png'),
+                            mobile: require('@/images/projects/playlistCoverMakerMobile.png')
                         }
                     },
                     {
@@ -44,8 +44,8 @@ export default {
                         href: '',
                         images: {
                             alt: '',
-                            desktop: require('@/images/projects/bassDesktop.png'),
-                            mobile: require('@/images/projects/bassMobile.png')
+                            desktop: require('@/images/projects/playlistFinderDesktop.png'),
+                            mobile: require('@/images/projects/playlistFinderMobile.png')
                         }
                     },
                 ]},
@@ -57,8 +57,8 @@ export default {
                         href: '',
                         images: {
                             alt: '',
-                            desktop: require('@/images/projects/bassDesktop.png'),
-                            mobile: require('@/images/projects/bassMobile.png')
+                            desktop: require('@/images/projects/melodyMelonDesktop.png'),
+                            mobile: require('@/images/projects/melodyMelonMobile.png')
                         }
                     },
                     {
@@ -67,8 +67,8 @@ export default {
                         href: '',
                         images: {
                             alt: '',
-                            desktop: require('@/images/projects/bassDesktop.png'),
-                            mobile: require('@/images/projects/bassMobile.png')
+                            desktop: require('@/images/projects/playlistToolsDesktop.png'),
+                            mobile: require('@/images/projects/playlistToolsMobile.png')
                         }
                     },
                 ]},
@@ -79,8 +79,8 @@ export default {
                         href: '',
                         images: {
                             alt: '',
-                            desktop: require('@/images/projects/bassDesktop.png'),
-                            mobile: require('@/images/projects/bassMobile.png')
+                            desktop: require('@/images/projects/exodiaFitnessDesktop.png'),
+                            mobile: require('@/images/projects/exodiaFitnessMobile.png')
                         }
                     },
                     {
@@ -233,13 +233,14 @@ export default {
                 min-width: 50%;
                 padding: 30px;
                 border-radius: 20px 0px 0px 20px;
-                background: rgb(0,0,0);
+                background: rgba(0,0,0, 0.6);
                 background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 z-index: 1;
+                backface-visibility: hidden;
                 .typography-portfolio {
                     @include h2;
                     font-size: 44px;
@@ -265,9 +266,10 @@ export default {
                 .deskImg,
                 .mobImg {
                     transition: 0.3s ease-in-out;
+                    backface-visibility: hidden;
                 }
                 .deskImg {
-                    max-width: 80%;
+                    max-width: 350px;
                     display: none;
                     @media only screen and (max-width: 1400px) {
                         display: block !important;

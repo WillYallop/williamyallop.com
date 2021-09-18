@@ -13,10 +13,10 @@
       <HomeLibraries/>
     </HomeSection>
     <!-- Contact -->
-    <HomeSection id="contact"
-    :title="'Contact'"
-    :body="'Got a question or something on your mind?'">
-      ff
+    <HomeSection id="blogs"
+    :title="'Blogs'"
+    :body="'Checkout my latest blog posts.'">
+      <HomeBlogs/>
     </HomeSection>
   </div>
 </template>
