@@ -2,9 +2,6 @@
     "/dist/js/index.js": "/dist/js/index.js",
     "/dist/css/main.css": "/dist/css/main.css",
     "/dist/index.html": "/dist/index.html",
-    "/dist/info/config/index.html": "/dist/info/config/index.html",
-    "/dist/info/routes/index.html": "/dist/info/routes/index.html",
-    "/dist/info/tags-and-filters/index.html": "/dist/info/tags-and-filters/index.html",
     "/dist/robots.txt": "/dist/robots.txt",
     "/dist/sitemap.xml": "/dist/sitemap.xml"
 }
