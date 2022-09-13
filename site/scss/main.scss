@@ -1,0 +1,245 @@
+// ---------------------------------------
+// Base
+:root {
+  --bg: #141414;
+  --bg-light: #232323;
+  --bg-dark: #0f0f0f;
+  --color: rgb(241, 241, 241);
+  --brand: #9dffa1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--color);
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+// ---------------------------------------
+// Page con
+.page-con {
+  padding: 100px 40px;
+  &__wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  &__header {
+    text-align: center;
+    h1 {
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  &__main {
+    margin-top: 60px;
+    ul {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      @media only screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    &__row {
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid var(--bg-light);
+      transition: border 0.3s;
+      &:hover {
+        border: 1px solid var(--brand);
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        color: white;
+        padding: 15px;
+      }
+      h2 {
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        svg {
+          height: 20px;
+          margin-left: 10px;
+          fill: white;
+        }
+      }
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+  &__footer {
+    border-top: 1px solid var(--bg-light);
+    margin-top: 60px;
+    padding-top: 20px;
+    text-align: center;
+    p {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+// ---------------------------------------
+// Info
+.info-single {
+  h2 {
+    a {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      svg {
+        height: 20px;
+        fill: white;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+// ---------------------------------------
+// Markdown
+.markdown {
+  margin-top: 40px;
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    margin-top: 20px;
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  h5 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  h6 {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    color: rgb(175, 175, 175);
+    code {
+      background: var(--bg-dark);
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: var(--brand);
+    }
+  }
+  a {
+    color: var(--brand);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+  }
+  li {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  blockquote {
+    border-left: 3px solid var(--brand);
+    padding-left: 10px;
+    margin-left: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  code {
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+  pre {
+    background: var(--bg-dark);
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    color: var(--brand);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    th {
+      border: 1px solid var(--bg-light);
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    td {
+      border: 1px solid var(--bg-light);
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}
+
+// ---------------------------------------
+// Utility
+.highlight {
+  color: var(--brand);
+}
+.code-block {
+  background-color: var(--bg-light);
+  padding: 2px 5px;
+  border-radius: 3px;
+}

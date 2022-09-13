@@ -1,69 +1,37 @@
-# portfolio
+<img src="https://lh3.googleusercontent.com/fife/AAbDypCwkziY2OAR1vQxJAqVhbV94Ilr6VUn_ggIgNlBML7dEkQuxs8zNWYSb1BXpslQR4TVfbHGOtOveqgyDNxZRBkn3ltRcclpzdV91nj00nmeVi8yY_mv72sOjymO9WTvcgRyBDB0GngL3EdG_DCh2i8WVOFqA1s8-YRPyIhr_p8DKV7WZtHgIkLveuSwOBTa0cmhH-oxmPygQ9hofOu-4TpoVytu1aFOT5if_i-52B9mhBCKMVTVg2cGrcrOHwgVso3xnrYT2pDxJ-97BB1AbFmkRzR8PU_Q2HJKI1ZqucAYt4ANBk6hX6mkWylpalIwr0wPnYyVOeK0mjnIWzd3ITHx37sLwdEnMF-m7RE1ssqKCvxbJ0OIrABowDrhUg7BTG8O4QqKjc8yj6-1CVfvTxVNORJUiIRuSxS9ULJsikfBpVhjaZQHAWxkLiEPRd_6WJVLls2QALryJrwPs9xdxPQI9sWRzEFFr9LFkAlKK2-sGRR6GymnBoiPJK2eyrJKXV_YiGFRAS4XAAXICBTKnGJMaYvrsUzaJY7ELaicVfx946hAMg8xrncR6Ja1m38YvF3eJGOK1nEV7yz9EK8zttDTU8Va7NhlWHl7UKIgAKuNPKwzWxicrttEaoPVZwJV5XaQIeBG97SYp0eykaEdL_5rTF3cmBhIHGLInX9f2nPegC56cz76-_yyfSuQSHKEVLwiYCKrYIjk8rBnNVsIqtOP2z0As7QcVuxx1X61AIDoodtZ_UqPfo5MoZblkKMXYjIx1RDLH421u_CVOBsLOD0psZlG_P9KjyDVMEALeAlXrhx3wYp6U_YYWXQB_9kOvN37uqb67LMVgl77aGU5G0stkDqmH60_Kx1gc85uqaGJN3SLk4d7Hz8x1SSF99jQLyLYs2BhaEuSOXpEkpmRzxrwa_mDDjz3r-WiOCOAlTQfteptiOVZzHCa0JZTUZ_naRL6833HRpEYUHxY7dQmqh4Zbyk8dmVLLIvqV8RpjjOvyJwsu6v1Z865nhqytD0qdEoGaPBoZShTiokRbqnEZNoDOUBvuVmxJn2tbGY1VhWz89pH0QVTXSUotf4kZHPqw0yzpd5gHYRIywTeddcldEnig2QbRhSTMUlmoTQsrhlBySmX7pf0lSC3Myw4s0iZAJrNXyScSt5bESLg6Nsv24TY5qn19FiYkacYQ3qOgyiEsHtifKbJuuTezFcEwQqBMw54ZHEtr-s8Laa69AqCekEMNaVgNcBO1HJzZVnoQVFfpp_D-nwldO2Fg2olExXJq0J5iOXP3bvlYQBN12wXJdlUp6lKIz23Us7zPTqkcUIdFBz1xTMwUpqtEJOtOnIg-GTwG2egrcafrheQoGF6mTWbk9mrNEWWqmwKWBlFVZqHjaN0cf6_JpYWXhJVvQFsxwnFKxhYI2iGqMoy8095JvVvKMh_mrwa3ktF3uVJYmGHUzE_nHfPFyNsRA=w2000-h756" alt="" style="margin-bottom: 20px;"/>
 
-## Build Setup
+SSG (static site generator) is a boilerplate project. It comes with a few loaders and templates built already to give examples on how everything works.
 
-```bash
-# install dependencies
-$ npm install
+The core directory of this project contains all the code that handles generating and routing the site. This has been left as a part of the code as to not limit what you can modify.
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+In this setup, the site directory contains all of your loaders, scss, frontend ts, static files and Liquid files. Everything is configurable however, in case you want to change any of this up.
 
-# build for production and launch server
-$ npm run build
-$ npm run start
 
-# generate static project
-$ npm run generate
+## Scripts
+
+```
+npm run dev
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+> This spins up an Express server where you can access your site. The default port is 3000, but can set with the PORT environment variable.
 
-## Special Directories
+```
+npm run build
+```
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+> This will statically generate your site, and dump it in a build directory.
 
-### `assets`
+## Learn more about
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+- [Config](core/markdown/config.md)
+- [Routes](core/markdown/routes.md)
+- [Tags & Filters](core/markdown/tags-and-filters.md)
 
 
-### `pages`
+## Features in development:
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+- Picture tag that generate/optimises images and inserts a picture element with multiple next gen file formats.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+## Notes
 
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+- This boilerplate has a Laravel mix setup to compile SCSS and TS. If this is not your prefered build tool, feel free to swap it out for something else.
