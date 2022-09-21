@@ -1,10 +1,13 @@
 // Types
-import { LoaderFunction, ParamTableLookup } from "../../core/types/config";
+import { LoaderFunction } from "../../core/types/config";
 
-export const blogParamLookup: ParamTableLookup = async () => {
-  return [];
+const blogsLoader: LoaderFunction = async () => {
+  return {
+    blogs: {
+      title: "Blogs",
+      description: "A list of blogs I have written",
+    },
+  };
 };
 
-export const blogLoader: LoaderFunction = async (params) => {
-  return {};
-};
+export default blogsLoader;

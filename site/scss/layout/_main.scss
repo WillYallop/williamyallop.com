@@ -3,3 +3,9 @@
 .layout-main {
   margin-left: rem(300);
 }
+
+@include tablet {
+  .layout-main {
+    margin-left: 0;
+  }
+}

@@ -1,4 +1,5 @@
-<div class="nav-sidebar">
+
+<div class="nav-sidebar" data-toggler-receiver="navigtion-sidebar">
   <div class="nav-sidebar__inner">
     <!-- intro -->
     <div class="l--f l--f-a-c">
@@ -11,8 +12,8 @@
     <!-- nav -->
     <nav class="nav-sidebar__nav l--bm-t-l">
       <ul>
-        <li class="active">
-          <a href="/projects">Projects</a>
+        <li>
+          <a href="/">Projects</a>
         </li>
         <li>
           <a href="/blogs">Blogs</a>
@@ -24,3 +25,7 @@
     </nav>
   </div>
 </div>
+
+<button class="nav-sidebar__toggle" aria-label="Toggle navigation bar" data-toggler="navigtion-sidebar">
+    <span class="sr-only">Toggle navigation bar</span>
+</button>

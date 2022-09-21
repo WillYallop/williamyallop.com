@@ -2,13 +2,151 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@functionalities/toggler/dist/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@functionalities/toggler/dist/index.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Toggler)
+/* harmony export */ });
+class Toggler {
+    config;
+    map;
+    constructor(config) {
+        this.config = {
+            activeClass: "active",
+            attributes: {
+                toggler: "data-toggler",
+                receiver: "data-toggler-receiver",
+                class: "data-toggler-class",
+                state: "data-toggler-state",
+                close: "data-toggler-close",
+            },
+            ...config,
+        };
+        this.map = new Map();
+        this.#initialise();
+    }
+    #initialise() {
+        const togglers = document.querySelectorAll(`[${this.config.attributes.toggler}]`);
+        [...togglers].map((toggler) => {
+            const togglerValue = toggler.getAttribute(this.config.attributes.toggler);
+            if (!togglerValue)
+                return;
+            const closeTogglers = toggler.getAttribute(this.config.attributes.close);
+            const closeTogglersArray = closeTogglers
+                ? closeTogglers.replaceAll(" ", "").split(",")
+                : [];
+            if (this.map.has(togglerValue))
+                return;
+            this.map.set(togglerValue, {
+                state: toggler.getAttribute(this.config.attributes.state) === "true"
+                    ? true
+                    : false,
+                activeClass: toggler.getAttribute(this.config.attributes.class) ||
+                    this.config.activeClass,
+                closeTogglers: closeTogglersArray,
+            });
+            this.#clickEvent(toggler);
+        });
+    }
+    #clickEvent(toggler) {
+        const togglerValue = toggler.getAttribute(this.config.attributes.toggler);
+        if (!togglerValue)
+            return;
+        const togglerInstance = this.map.get(togglerValue);
+        if (!togglerInstance)
+            return;
+        const toggle = () => {
+            this.#updateGroup(document.querySelectorAll(`[${this.config.attributes.receiver}="${togglerValue}"]`), togglerInstance, false);
+            this.#updateGroup(document.querySelectorAll(`[${this.config.attributes.toggler}="${togglerValue}"]`), togglerInstance, true);
+            togglerInstance.closeTogglers.map((closeToggler) => {
+                const closeTogglerInstance = this.map.get(closeToggler);
+                if (!closeTogglerInstance)
+                    return;
+                closeTogglerInstance.state = false;
+                this.#updateGroup(document.querySelectorAll(`[${this.config.attributes.toggler}="${closeToggler}"]`), closeTogglerInstance, true);
+                this.#updateGroup(document.querySelectorAll(`[${this.config.attributes.receiver}="${closeToggler}"]`), closeTogglerInstance, false);
+            });
+        };
+        toggle();
+        toggler.addEventListener("click", (e) => {
+            e.preventDefault();
+            togglerInstance.state = !togglerInstance.state;
+            toggle();
+        });
+    }
+    #updateGroup(group, togglerInstance, aria) {
+        [...group].map((receiver) => {
+            if (togglerInstance.state) {
+                receiver.classList.add(togglerInstance.activeClass);
+                if (aria)
+                    receiver.setAttribute("aria-expanded", "true");
+            }
+            else {
+                receiver.classList.remove(togglerInstance.activeClass);
+                if (aria)
+                    receiver.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+}
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./site/ts/functions/active-links.ts":
+/*!*******************************************!*\
+  !*** ./site/ts/functions/active-links.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var setActiveLinks = function setActiveLinks() {
+  var links = document.querySelectorAll("a");
+  links.forEach(function (link) {
+    if (link.href === window.location.href) {
+      link.classList.add("active");
+    }
+  });
+};
+
+exports["default"] = setActiveLinks;
+
+/***/ }),
+
 /***/ "./site/ts/index.ts":
 /*!**************************!*\
   !*** ./site/ts/index.ts ***!
   \**************************/
-/***/ (() => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var active_links_1 = __importDefault(__webpack_require__(/*! ./functions/active-links */ "./site/ts/functions/active-links.ts"));
+
+var toggler_1 = __importDefault(__webpack_require__(/*! @functionalities/toggler */ "./node_modules/@functionalities/toggler/dist/index.js"));
+
+new toggler_1["default"]();
+(0, active_links_1["default"])();
 
 /***/ }),
 
@@ -44,7 +182,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -83,6 +221,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	

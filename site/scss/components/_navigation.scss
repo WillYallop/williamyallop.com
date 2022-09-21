@@ -9,6 +9,8 @@
   background-color: var(--bg-section);
   border-left: rem(10) solid var(--primary);
   overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 9;
   &__inner {
     padding: rem(40) rem(20);
   }
@@ -23,23 +25,7 @@
     ul {
       li {
         margin-bottom: rem(5);
-        &.active {
-          position: relative;
-          &:before {
-            content: "";
-            position: absolute;
-            left: rem(-20);
-            top: 50%;
-            transform: translateY(-50%);
-            height: rem(40);
-            width: rem(6);
-            background-color: var(--primary);
-            border-radius: 0 rem(5) rem(5) 0;
-          }
-          a {
-            color: var(--title);
-          }
-        }
+
         a {
           @include animate;
           display: block;
@@ -50,8 +36,46 @@
           &:hover {
             color: var(--title);
           }
+          &.active {
+            position: relative;
+            color: var(--title);
+            &:before {
+              content: "";
+              position: absolute;
+              left: rem(-20);
+              top: 50%;
+              transform: translateY(-50%);
+              height: rem(40);
+              width: rem(6);
+              background-color: var(--primary);
+              border-radius: 0 rem(5) rem(5) 0;
+            }
+          }
         }
       }
+    }
+  }
+  &__toggle {
+    display: none;
+    position: fixed;
+    bottom: rem(20);
+    right: rem(20);
+    width: rem(60);
+    height: rem(60);
+    background-color: var(--primary);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  @include tablet {
+    left: rem(-300);
+    &.active {
+      left: 0;
+    }
+    &__toggle {
+      display: block;
     }
   }
 }

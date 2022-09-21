@@ -3,7 +3,12 @@ import menuLoader from "./site/loaders/global/menu";
 import projectLoader from "./site/loaders/global/projects";
 // route loaders
 import homepageLoader from "./site/loaders/homepage";
-import { blogLoader, blogParamLookup } from "./site/loaders/blogs";
+import contactLoader from "./site/loaders/contact";
+import blogsLoader from "./site/loaders/blogs";
+import {
+  blogSingleLoader,
+  blogsParamLookup,
+} from "./site/loaders/blogs-single";
 // Types
 import { GeneratorConfig, RoutesObj } from "./core/types/config";
 
@@ -12,14 +17,24 @@ const templatesDir = "./site/views/templates";
 const routes: Array<RoutesObj> = [
   {
     path: "/",
-    template: `${templatesDir}/home.liquid`,
+    template: `${templatesDir}/projects.liquid`,
     loaders: [homepageLoader],
+  },
+  {
+    path: "/contact",
+    template: `${templatesDir}/contact.liquid`,
+    loaders: [contactLoader],
+  },
+  {
+    path: "/blogs",
+    template: `${templatesDir}/blogs.liquid`,
+    loaders: [blogsLoader],
   },
   {
     path: "/blog/:slug",
     template: `${templatesDir}/blog-single.liquid`,
-    loaders: [blogLoader],
-    paramLookup: blogParamLookup,
+    loaders: [blogSingleLoader],
+    paramLookup: blogsParamLookup,
   },
 ];
 

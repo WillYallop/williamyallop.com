@@ -1,13 +1,12 @@
-/*  
-    Example loader file - delete and replace as needed.
-    
-    Desc:
-    This loader returns data for the homepage route to its template to use.
-*/
+// Types
+import { LoaderFunction } from "../../core/types/config";
 
-const homepageLoader = async () => {
+const homepageLoader: LoaderFunction = async () => {
   return {
-    home: {},
+    home: {
+      title: "Projects",
+      description: "A list of projects I have worked on",
+    },
   };
 };
 

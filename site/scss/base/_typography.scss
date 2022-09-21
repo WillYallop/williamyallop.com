@@ -42,8 +42,9 @@
 
 // Text element defaults
 h1 {
-  font-size: clamp(rem(20), 10vw, rem(46));
+  font-size: clamp(rem(20), 10vw, rem(32));
   font-weight: 700;
+  margin-bottom: rem(5);
 }
 h2 {
   font-size: clamp(rem(18), 10vw, rem(24));
