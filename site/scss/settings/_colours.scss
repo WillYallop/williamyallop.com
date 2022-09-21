@@ -8,17 +8,20 @@ $colours: (
   // background
   _background: rgb(26, 26, 26),
   _section: rgb(22, 22, 22),
+  _section-light: rgb(34, 34, 34),
   // Typography
   _title: rgb(255, 255, 255),
   _text: rgb(221, 221, 221),
   // Accents
   _primary: rgb(44, 26, 204),
+  _primary-light: rgb(77, 59, 243),
 );
 
 // Light mode
 :root {
   --bg: #{map-get($map: $colours, $key: _background)};
   --bg-section: #{map-get($map: $colours, $key: _section)};
+  --bg-section-light: #{map-get($map: $colours, $key: _section-light)};
 
   --error: #{map-get($colours, _error)};
   --success: #{map-get($colours, _success)};
@@ -28,4 +31,5 @@ $colours: (
   --text: #{map-get($colours, _text)};
 
   --primary: #{map-get($map: $colours, $key: _primary)};
+  --primary-light: #{map-get($map: $colours, $key: _primary-light)};
 }

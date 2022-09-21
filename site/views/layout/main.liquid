@@ -14,6 +14,7 @@
     <main class="layout-main">
         {% block mainContent %} {% endblock %}
     </main>
+    {% include '../components/footer.liquid' %}
   </body>
   <script src="{{ "/js/index.js" | relativeAsset }}" async></script> {% block scripts %} {% endblock %}
 </html>

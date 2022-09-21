@@ -1,12 +1,14 @@
 :root {
   --bg: rgb(26, 26, 26);
   --bg-section: rgb(22, 22, 22);
+  --bg-section-light: rgb(34, 34, 34);
   --error: red;
   --success: green;
   --warning: orange;
   --title: rgb(255, 255, 255);
   --text: rgb(221, 221, 221);
   --primary: rgb(44, 26, 204);
+  --primary-light: rgb(77, 59, 243);
 }
 
 body {
@@ -34,8 +36,13 @@ body.preload * {
 }
 
 a {
+  transition: 0.2s ease-out;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
+  color: var(--primary-light);
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .l__grid {
@@ -617,5 +624,17 @@ meter {
   }
   .nav-sidebar__toggle {
     display: block;
+  }
+}
+
+.footer-root {
+  margin-left: 18.75rem;
+  background-color: var(--bg-section-light);
+  height: 3.75rem;
+}
+
+@media (max-width: 1024px) {
+  .footer-root {
+    margin-left: 0;
   }
 }

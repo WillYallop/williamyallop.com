@@ -1,8 +1,13 @@
 @use "./index.scss" as *;
 
 a {
+  @include animate;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
+  color: var(--primary-light);
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .btn-style {
