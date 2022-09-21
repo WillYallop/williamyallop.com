@@ -4,6 +4,8 @@ const siteRoot = "site";
 const outputDir = "dist";
 
 mix.disableNotifications();
+mix.setPublicPath(outputDir);
+mix.setResourceRoot("/");
 
 mix
   .ts(`${siteRoot}/ts/index.ts`, `${outputDir}/js`)

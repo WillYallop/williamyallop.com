@@ -1,0 +1,31 @@
+// ------------------------------------
+// Background colours
+// ------------------------------------
+$colours: (
+  _error: red,
+  _success: green,
+  _warning: orange,
+  // background
+  _background: rgb(26, 26, 26),
+  _section: rgb(22, 22, 22),
+  // Typography
+  _title: rgb(255, 255, 255),
+  _text: rgb(221, 221, 221),
+  // Accents
+  _primary: rgb(44, 26, 204),
+);
+
+// Light mode
+:root {
+  --bg: #{map-get($map: $colours, $key: _background)};
+  --bg-section: #{map-get($map: $colours, $key: _section)};
+
+  --error: #{map-get($colours, _error)};
+  --success: #{map-get($colours, _success)};
+  --warning: #{map-get($colours, _warning)};
+
+  --title: #{map-get($colours, _title)};
+  --text: #{map-get($colours, _text)};
+
+  --primary: #{map-get($map: $colours, $key: _primary)};
+}

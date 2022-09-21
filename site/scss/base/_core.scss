@@ -1,0 +1,10 @@
+@use "./index.scss" as *;
+
+body {
+  font-size: 16px;
+  background-color: var(--bg);
+  font-family: $font_family;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
