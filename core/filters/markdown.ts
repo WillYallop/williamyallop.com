@@ -5,7 +5,8 @@ const md = new MarkdownIt();
 
 export const registerMarkdownFilter = (engine: Liquid) => {
   engine.registerFilter("markdown", (str) => {
-    return md.render(str);
+    if (str) return md.render(str);
+    else return "";
   });
 };
 export default registerMarkdownFilter;

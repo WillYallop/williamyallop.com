@@ -6,6 +6,10 @@ import homepageLoader from "./site/loaders/homepage";
 import contactLoader from "./site/loaders/contact";
 import blogsLoader from "./site/loaders/blogs";
 import {
+  projectsSingleLoader,
+  projectsParamLookup,
+} from "./site/loaders/projects-single";
+import {
   blogSingleLoader,
   blogsParamLookup,
 } from "./site/loaders/blogs-single";
@@ -19,6 +23,12 @@ const routes: Array<RoutesObj> = [
     path: "/",
     template: `${templatesDir}/projects.liquid`,
     loaders: [homepageLoader],
+  },
+  {
+    path: "/project/:slug",
+    template: `${templatesDir}/project-single.liquid`,
+    loaders: [projectsSingleLoader],
+    paramLookup: projectsParamLookup,
   },
   {
     path: "/contact",

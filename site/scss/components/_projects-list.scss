@@ -39,6 +39,12 @@
     display: none;
     transform: scale(0.9);
     opacity: 0;
+    a {
+      display: block;
+      &:hover {
+        text-decoration: none;
+      }
+    }
     &.active {
       display: block;
     }

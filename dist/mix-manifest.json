@@ -11,6 +11,12 @@
     "/fonts/Poppins-Regular.woff2": "/fonts/Poppins-Regular.woff2",
     "/index.html": "/index.html",
     "/mix-manifest.json": "/mix-manifest.json",
+    "/project/algorithm-visualiser/index.html": "/project/algorithm-visualiser/index.html",
+    "/project/anyrep/index.html": "/project/anyrep/index.html",
+    "/project/bp-deploy/index.html": "/project/bp-deploy/index.html",
+    "/project/cover-maker/index.html": "/project/cover-maker/index.html",
+    "/project/functionalities/index.html": "/project/functionalities/index.html",
+    "/project/static-site-generator/index.html": "/project/static-site-generator/index.html",
     "/robots.txt": "/robots.txt",
     "/sitemap.xml": "/sitemap.xml"
 }

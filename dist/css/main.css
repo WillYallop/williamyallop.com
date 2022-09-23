@@ -695,6 +695,12 @@ meter {
   transform: scale(0.9);
   opacity: 0;
 }
+.project-list-root__item a {
+  display: block;
+}
+.project-list-root__item a:hover {
+  text-decoration: none;
+}
 .project-list-root__item.active {
   display: block;
 }

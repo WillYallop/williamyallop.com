@@ -1,0 +1,10 @@
+{% layout "../layout/main.liquid" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block mainContent %}
+    <h1>PROJECT</h1>
+    {{ project.data.markdown | markdown }}
+{% endblock %}
