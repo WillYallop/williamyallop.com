@@ -5,7 +5,8 @@ const homepageLoader: LoaderFunction = async () => {
   return {
     home: {
       title: "Projects",
-      description: "A list of projects I have worked on",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, justo non fringilla consequat, erat elit sollicitudin sem.",
     },
   };
 };

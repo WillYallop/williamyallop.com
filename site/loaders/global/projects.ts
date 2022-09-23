@@ -3,19 +3,18 @@ import { LoaderFunction } from "../../../core/types/config";
 
 interface Project {
   title: string;
-  previewUrl: string;
+  npm: string;
   category:
     | "package"
     | "website"
     | "web_app"
     | "wp_plugin"
-    | "wp_theme"
-    | "shopify_theme"
     | "api"
     | "boilerplate"
     | "other";
   repository: string;
   completed: boolean;
+  summary: string;
 }
 
 const projectLoader: LoaderFunction = async (params) => {
@@ -23,69 +22,147 @@ const projectLoader: LoaderFunction = async (params) => {
   const projects: Array<Project> = [
     {
       title: "Static Site Generator",
-      previewUrl: "",
+      npm: "",
       category: "boilerplate",
       repository: "https://github.com/WillYallop/static-site-generator",
       completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
     },
     {
       title: "@functionalities/mediakit",
-      previewUrl: "https://www.npmjs.com/package/@functionalities/mediakit",
+      npm: "https://www.npmjs.com/package/@functionalities/mediakit",
       category: "package",
       repository:
         "https://github.com/WillYallop/functionalities/blob/main/packages/mediakit/README.md",
       completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
     },
     {
       title: "@functionalities/disclosure",
-      previewUrl: "https://www.npmjs.com/package/@functionalities/disclosure",
+      npm: "https://www.npmjs.com/package/@functionalities/disclosure",
       category: "package",
       repository:
         "https://github.com/WillYallop/functionalities/blob/main/packages/disclosure/README.md",
       completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
     },
     {
       title: "@functionalities/stickyheader",
-      previewUrl: "https://www.npmjs.com/package/@functionalities/stickyheader",
+      npm: "https://www.npmjs.com/package/@functionalities/stickyheader",
       category: "package",
       repository:
         "https://github.com/WillYallop/functionalities/blob/main/packages/stickyheader/README.md",
       completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
+    },
+    {
+      title: "@functionalities/toggler",
+      npm: "https://www.npmjs.com/package/@functionalities/toggler",
+      category: "package",
+      repository:
+        "https://github.com/WillYallop/functionalities/blob/main/packages/toggler/README.md",
+      completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
+    },
+    {
+      title: "@functionalities/animations",
+      npm: "https://www.npmjs.com/package/@functionalities/animations",
+      category: "package",
+      repository:
+        "https://github.com/WillYallop/functionalities/blob/main/packages/animations/README.md",
+      completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
+    },
+    {
+      title: "@functionalities/formhandler",
+      npm: "https://www.npmjs.com/package/@functionalities/formhandler",
+      category: "package",
+      repository:
+        "https://github.com/WillYallop/functionalities/blob/main/packages/formhandler/README.md",
+      completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
     },
     {
       title: "Anyrep Appliance Repairs",
-      previewUrl: "https://anyrep.co.uk/",
+      npm: "https://anyrep.co.uk/",
       category: "website",
       repository: "",
       completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
     },
 
     {
       title: "Algorithm Visualiser",
-      previewUrl: "",
+      npm: "",
       category: "web_app",
       repository:
         "https://github.com/WillYallop/algorithm_visualiser/tree/master",
       completed: false,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
     },
     {
       title: "BP Deploy",
-      previewUrl: "",
+      npm: "",
       category: "wp_plugin",
       repository: "https://github.com/WillYallop/bp-deploy",
       completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
     },
     {
       title: "Cover Maker",
-      previewUrl: "",
+      npm: "",
       category: "web_app",
       repository: "https://github.com/WillYallop/cover-maker",
       completed: true,
+      summary:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
     },
   ];
 
   return {
-    projects: projects,
+    projects: {
+      list: projects,
+      categories: [
+        {
+          name: "Websites",
+          value: "website",
+        },
+        {
+          name: "Web Apps",
+          value: "web_app",
+        },
+        {
+          name: "Packages",
+          value: "package",
+        },
+        {
+          name: "WordPress Plugins",
+          value: "wp_plugin",
+        },
+        {
+          name: "APIs",
+          value: "api",
+        },
+        {
+          name: "Boilerplates",
+          value: "boilerplate",
+        },
+        {
+          name: "Other",
+          value: "other",
+        },
+      ],
+    },
   };
 };
 

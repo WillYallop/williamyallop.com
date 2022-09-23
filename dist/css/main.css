@@ -1,14 +1,14 @@
 :root {
-  --bg: rgb(26, 26, 26);
-  --bg-section: rgb(22, 22, 22);
-  --bg-section-light: rgb(34, 34, 34);
-  --error: red;
-  --success: green;
+  --bg: rgb(255, 255, 255);
+  --bg-section: #ebeff2;
+  --error: #d33f49;
+  --success: #659b5e;
   --warning: orange;
-  --title: rgb(255, 255, 255);
-  --text: rgb(221, 221, 221);
-  --primary: rgb(44, 26, 204);
-  --primary-light: rgb(77, 59, 243);
+  --title: rgb(15, 15, 15);
+  --text: rgb(32, 32, 32);
+  --primary: #b8dbe4;
+  --primary-light: rgb(26, 26, 26);
+  --secondary: #262730;
 }
 
 body {
@@ -542,6 +542,26 @@ meter {
   font-weight: 700;
   font-display: swap;
 }
+@-webkit-keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .layout-main {
   margin-left: 18.75rem;
 }
@@ -557,8 +577,8 @@ meter {
   left: 0;
   bottom: 0;
   width: 18.75rem;
-  background-color: var(--bg-section);
-  border-left: 0.625rem solid var(--primary);
+  background-color: var(--primary);
+  border-left: 0.625rem solid var(--secondary);
   overflow-y: auto;
   transition: left 0.3s ease;
   z-index: 9;
@@ -597,9 +617,9 @@ meter {
   left: -1.25rem;
   top: 50%;
   transform: translateY(-50%);
-  height: 2.5rem;
+  height: 1.875rem;
   width: 0.375rem;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   border-radius: 0 0.3125rem 0.3125rem 0;
 }
 .nav-sidebar__toggle {
@@ -609,7 +629,7 @@ meter {
   right: 1.25rem;
   width: 3.75rem;
   height: 3.75rem;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -629,12 +649,117 @@ meter {
 
 .footer-root {
   margin-left: 18.75rem;
-  background-color: var(--bg-section-light);
+  background-color: var(--bg-section);
   height: 3.75rem;
 }
 
 @media (max-width: 1024px) {
   .footer-root {
     margin-left: 0;
+  }
+}
+.project-list-root__filter {
+  padding: 2.5rem 0 0 2.5rem;
+  display: flex;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.project-list-root__filter::-webkit-scrollbar {
+  display: none;
+}
+.project-list-root__filter__item {
+  transition: 0.2s ease-out;
+  border-radius: 1.25rem;
+  background-color: white;
+  border: 0.0625rem solid var(--secondary);
+  padding: 0.3125rem 0.9375rem;
+  font-size: 1rem;
+  margin-right: 0.625rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.project-list-root__filter__item.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.project-list-root__filter__item:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.project-list-root__item {
+  transition: 0.2s ease-out;
+  background-color: var(--bg-section);
+  border-radius: 0.625rem;
+  display: none;
+  transform: scale(0.9);
+  opacity: 0;
+}
+.project-list-root__item.active {
+  display: block;
+}
+.project-list-root__item.animate {
+  -webkit-animation: fadeZoomIn 0.5s ease-in-out;
+          animation: fadeZoomIn 0.5s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.project-list-root__item__image {
+  width: 100%;
+  position: relative;
+  border: 0.0625rem solid var(--secondary);
+  border-radius: 0.625rem 0.625rem 0 0;
+}
+.project-list-root__item__image:after {
+  content: "";
+  display: block;
+  padding-bottom: 56.25%;
+}
+.project-list-root__item__image__tag {
+  position: absolute;
+  top: 0.9375rem;
+  left: 0.9375rem;
+  z-index: 2;
+  background-color: var(--primary);
+  font-size: 0.875rem;
+  border-radius: 1.25rem;
+  padding: 0.3125rem 0.625rem;
+  text-transform: capitalize;
+}
+.project-list-root__item__image__complete {
+  position: absolute;
+  top: 0.9375rem;
+  right: 0.9375rem;
+  height: 1.5625rem;
+  width: 1.5625rem;
+  border-radius: 50%;
+  background-color: var(--success);
+  z-index: 2;
+}
+.project-list-root__item__image__complete svg {
+  height: 0.9375rem;
+  fill: rgb(255, 255, 255);
+}
+.project-list-root__item__image__inner {
+  z-index: 1;
+}
+.project-list-root__item__textarea {
+  padding: 0.9375rem;
+}
+.project-list-root__item__textarea h3 {
+  font-size: 1.125rem;
+}
+.project-list-root__item__textarea p {
+  margin-top: 0.3125rem;
+  font-size: 0.875rem;
+}
+@media (max-width: 1024px) {
+  .project-list-root__filter {
+    padding: 2.5rem 0 0 1.875rem;
+  }
+}
+@media (max-width: 768px) {
+  .project-list-root__filter {
+    padding: 2.5rem 0 0 1.25rem;
   }
 }

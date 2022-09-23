@@ -6,8 +6,8 @@
   left: 0;
   bottom: 0;
   width: rem(300);
-  background-color: var(--bg-section);
-  border-left: rem(10) solid var(--primary);
+  background-color: var(--primary);
+  border-left: rem(10) solid var(--secondary);
   overflow-y: auto;
   transition: left 0.3s ease;
   z-index: 9;
@@ -45,9 +45,9 @@
               left: rem(-20);
               top: 50%;
               transform: translateY(-50%);
-              height: rem(40);
+              height: rem(30);
               width: rem(6);
-              background-color: var(--primary);
+              background-color: var(--secondary);
               border-radius: 0 rem(5) rem(5) 0;
             }
           }
@@ -62,7 +62,7 @@
     right: rem(20);
     width: rem(60);
     height: rem(60);
-    background-color: var(--primary);
+    background-color: var(--secondary);
     border-radius: 50%;
     border: none;
     cursor: pointer;

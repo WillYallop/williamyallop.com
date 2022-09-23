@@ -9,6 +9,7 @@ import buildLoaderObj from "./build-loader-obj";
 // Filters
 import registerMarkdownFilter from "../filters/markdown";
 import registerRelativeAssetFilter from "../filters/relative-asset";
+import registerCategoryFilter from "../filters/category-filter";
 // Types
 import { RoutesObj } from "../types/config";
 
@@ -30,6 +31,7 @@ const renderRoute = async (
   // register custom filters
   registerMarkdownFilter(engine);
   registerRelativeAssetFilter(engine, route.path);
+  registerCategoryFilter(engine);
 
   return await engine.renderFile(
     template,

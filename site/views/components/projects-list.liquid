@@ -1,0 +1,43 @@
+<div class="project-list-root">
+    <!-- Filter -->
+    <div class="project-list-root__filter">
+        <button class="project-list-root__filter__item" data-toggler-multi="all-projects" data-toggler-multi-state="true" data-toggler-multi-targets="project-filter-website, project-filter-web_app, project-filter-package, project-filter-wp_plugin, project-filter-api, project-filter-boilerplate, project-filter-other">
+            All
+        </button>
+        {% for category in projects.categories %}
+            <button class="project-list-root__filter__item" data-toggler="project-filter-{{ category.value }}">
+                {{ category.name }}
+            </button>
+        {% endfor %}
+    </div>
+    <!-- Items -->
+    <ul class="project-list-root__items l__grid l__grid--3c l__grid--g-m  l--bp">
+        {% for project in projects.list %}
+            <li class="project-list-root__item" data-toggler-receiver="project-filter-{{ project.category }}" data-animate="[
+            {
+                'class': 'animate'
+            }
+        ]">
+                <div class="project-list-root__item__image">
+                    <!-- category tag -->
+                    <div class="project-list-root__item__image__tag">
+                        {{ project.category | category-filter }}
+                    </div>
+                    {% if project.completed %}
+                        <span class="project-list-root__item__image__complete l--f l--f-j-c l--f-a-c" aria-label="complete">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                        </span>
+                    {% endif %}
+                    <!-- inner -->
+                    <div class="project-list-root__item__image__inner l__cover">
+
+                    </div>
+                </div>
+                <div class="project-list-root__item__textarea">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.summary }}</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
