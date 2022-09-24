@@ -14,7 +14,7 @@ type Categories =
 
 interface Project {
   title: string;
-  npm: string;
+  npm?: string;
   slug: string;
   category: Categories;
   repository: string;
@@ -22,6 +22,16 @@ interface Project {
   summary: string;
   markdownPath?: string;
   markdown?: string;
+  technologies?: Array<string>;
+  preview?: string;
+  images?: {
+    thumbnail?: string;
+    preview?: string;
+    gallery?: Array<{
+      src: string;
+      alt: string;
+    }>;
+  };
 }
 
 interface CategoriesObj {
@@ -34,7 +44,6 @@ export const projects: Array<Project> = [
   {
     title: "Static Site Generator",
     slug: "static-site-generator",
-    npm: "",
     category: "boilerplate",
     repository: "https://github.com/WillYallop/static-site-generator",
     completed: true,
@@ -109,20 +118,39 @@ export const projects: Array<Project> = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
   },
   {
-    title: "Anyrep Appliance Repairs",
+    title: "Anyrep",
     slug: "anyrep",
-    npm: "https://anyrep.co.uk/",
     category: "website",
     repository: "",
     completed: true,
     summary:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam tristique eros, nec ornare nulla semper sit amet. Praesent venenatis nisi eget sollicitudin sodales.",
+      "Anyrep is an appliance repairs company based in Norwich, Norfolk. They needed a website to showcase their services and allow customers to contact them.",
+    technologies: ["Deno", "Fresh", "Typescript", "TailwindCSS"],
+    preview: "https://anyrep.co.uk",
+    images: {
+      thumbnail: "anyrep/thumbnail.jpg",
+      preview: "anyrep/preview.jpg",
+      gallery: [
+        {
+          src: "anyrep/gallery-services.jpg",
+          alt: "Anyrep services page",
+        },
+        {
+          src: "anyrep/gallery-homemobile.jpg",
+          alt: "Anyrep homepage on mobile",
+        },
+        {
+          src: "anyrep/gallery-lighthouse.jpg",
+          alt: "Anyrep google lighthouse score",
+        },
+      ],
+    },
+    markdownPath: "/projects/anyrep.md",
   },
 
   {
     title: "Algorithm Visualiser",
     slug: "algorithm-visualiser",
-    npm: "",
     category: "web_app",
     repository:
       "https://github.com/WillYallop/algorithm_visualiser/tree/master",
@@ -133,7 +161,6 @@ export const projects: Array<Project> = [
   {
     title: "BP Deploy",
     slug: "bp-deploy",
-    npm: "",
     category: "wp_plugin",
     repository: "https://github.com/WillYallop/bp-deploy",
     completed: true,
@@ -143,7 +170,6 @@ export const projects: Array<Project> = [
   {
     title: "Cover Maker",
     slug: "cover-maker",
-    npm: "",
     category: "web_app",
     repository: "https://github.com/WillYallop/cover-maker",
     completed: true,
@@ -197,7 +223,7 @@ export const projectsSingleLoader: LoaderFunction = async (params) => {
     if (project !== undefined) {
       const pathLoc = path.resolve(
         __dirname,
-        `../markdown/${project.markdownPath}`
+        `../resources/markdown/${project.markdownPath}`
       );
       let markdown = "";
       const fileExists = fs.existsSync(path.resolve(pathLoc));

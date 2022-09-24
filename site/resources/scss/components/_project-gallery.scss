@@ -1,0 +1,28 @@
+@use "./index.scss" as *;
+
+.project-gallery-root {
+  overflow: hidden;
+  &__wrapper {
+    overflow-x: scroll;
+  }
+  &__gallery {
+    display: flex;
+    gap: rem(20);
+    height: rem(500);
+    picture {
+      display: block;
+      border-radius: rem(10);
+      border: rem(1) solid var(--secondary);
+      overflow: hidden;
+      height: 100%;
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+  @include tablet {
+    &__wrapper {
+      margin-right: calc(((calc(100vw) - 100%) / 2) * -1);
+    }
+  }
+}

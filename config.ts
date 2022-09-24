@@ -55,7 +55,7 @@ const config: GeneratorConfig = {
   siteRoot: "site",
   siteUrl: "http://localhost:3000",
   images: {
-    directory: "./site/images",
+    directory: "./site/resources/images",
     outputDir: "images",
     quality: 80,
   },

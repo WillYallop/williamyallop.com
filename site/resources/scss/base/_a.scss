@@ -1,0 +1,54 @@
+@use "./index.scss" as *;
+
+a {
+  @include animate;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--primary-light);
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.btn-style {
+  // ------------------------------------
+  // Element
+  // ------------------------------------
+  &__main {
+    background-color: var(--primary);
+    padding: 0 rem(30);
+    height: rem(40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: rem(20);
+  }
+  &__icon {
+    height: rem(40);
+    width: rem(40);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: rem(10);
+    svg {
+      height: rem(20);
+    }
+    &--github {
+      background-color: #333;
+      svg {
+        fill: white;
+      }
+    }
+    &--npm {
+      background-color: #cb3837;
+      svg {
+        fill: white;
+      }
+    }
+  }
+
+  // ------------------------------------
+  // Modifiers
+  // ------------------------------------
+}

@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block mainContent %}
-    <h1>PROJECT</h1>
-    {{ project.data.markdown | markdown }}
+    <!-- Section Header -->
+    {% include '../components/project-hero.liquid' %}
+    <!-- Textarea -->
+    {% include '../components/project-textarea.liquid' %}
+    <!-- Gallery -->
+    {% include '../components/project-gallery.liquid' %}
 {% endblock %}

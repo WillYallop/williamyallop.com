@@ -9,13 +9,13 @@ $border_style: rem(1) solid var(--border);
 // Wrapper
 // ------------------------------------
 $block_wrapper: (
-  _large: rem(600),
-  _medium: rem(400),
+  _large: rem(740),
+  _medium: rem(500),
   _small: rem(200),
 );
 $section_wrapper: (
   _large: rem(1400),
-  _medium: rem(1200),
+  _medium: rem(980),
   _small: rem(800),
 );
 
@@ -29,8 +29,8 @@ $block_padding: (
   _small_mobile: rem(10),
 );
 $section_padding: (
-  _desktop: rem(80),
-  _tablet: rem(60),
+  _desktop: rem(60),
+  _tablet: rem(50),
   _mobile: rem(40),
   _small_mobile: rem(40),
 );

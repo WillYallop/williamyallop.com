@@ -25,3 +25,12 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+picture {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}

@@ -1,0 +1,22 @@
+@use "./index.scss" as *;
+
+.footer-root {
+  background-color: var(--bg-section);
+  height: rem(60);
+  position: fixed;
+  bottom: 0;
+  left: rem(300);
+  right: 0;
+  z-index: 1;
+  &__spacer {
+    height: rem(60);
+    display: block;
+    pointer-events: none;
+  }
+}
+
+@include tablet {
+  .footer-root {
+    left: 0;
+  }
+}

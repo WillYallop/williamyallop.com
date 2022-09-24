@@ -1,0 +1,13 @@
+<section class="project-gallery-root">
+    <div class="l__wrapper l--sp-h l--sp-b">
+        <div class="project-gallery-root__wrapper">
+            <div class="project-gallery-root__gallery" data-gallery-container>
+                {% for image in project.data.images.gallery %}
+                    <div class="project-gallery-root__image" data-gallery-slide>
+                        {% include '../partials/picture.liquid', src: image.src, format: 'jpeg', size: 1200 %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

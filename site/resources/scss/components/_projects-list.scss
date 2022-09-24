@@ -45,6 +45,13 @@
         text-decoration: none;
       }
     }
+    &:hover {
+      picture {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
     &.active {
       display: block;
     }
@@ -57,6 +64,7 @@
       position: relative;
       border: rem(1) solid var(--secondary);
       border-radius: rem(10) rem(10) 0 0;
+      overflow: hidden;
       &:after {
         content: "";
         display: block;
@@ -89,6 +97,11 @@
       }
       &__inner {
         z-index: 1;
+        picture {
+          img {
+            @include animate;
+          }
+        }
       }
     }
     &__textarea {

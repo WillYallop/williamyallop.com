@@ -8,6 +8,7 @@ $colours: (
   // background
   _background: rgb(255, 255, 255),
   _section: #ebeff2,
+  _section-dark: #dfe4e8,
   // Typography
   _title: rgb(15, 15, 15),
   _text: rgb(32, 32, 32),
@@ -21,6 +22,7 @@ $colours: (
 :root {
   --bg: #{map-get($map: $colours, $key: _background)};
   --bg-section: #{map-get($map: $colours, $key: _section)};
+  --bg-section-dark: #{map-get($map: $colours, $key: _section-dark)};
 
   --error: #{map-get($colours, _error)};
   --success: #{map-get($colours, _success)};

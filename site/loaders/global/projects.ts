@@ -12,6 +12,7 @@ const projectLoader: LoaderFunction = async (params) => {
       repository: project.repository,
       completed: project.completed,
       summary: project.summary,
+      images: project.images,
     };
   });
 

@@ -1,0 +1,62 @@
+@use "./index.scss" as *;
+
+.project-hero-root {
+  background-color: var(--bg-section);
+  overflow: hidden;
+  &__back {
+    width: 100%;
+    height: rem(40);
+    background-color: var(--bg-section-dark);
+    a {
+      width: 100%;
+      padding: 0 rem(20);
+    }
+    svg {
+      height: rem(25);
+    }
+  }
+  &__top-bar {
+    background-color: var(--bg-section);
+  }
+  &__textarea {
+    text-align: center;
+    h1 {
+      margin-bottom: rem(20);
+      font-size: clamp(rem(20), 10vw, rem(48));
+    }
+  }
+  &__technologies {
+    ul {
+      li {
+        padding: rem(5) rem(10);
+        font-size: rem(14);
+        background-color: var(--primary);
+        border-radius: rem(20);
+        margin: rem(5);
+      }
+    }
+  }
+  &__preview {
+    background-color: white;
+    position: relative;
+    picture {
+      border: rem(1) solid var(--secondary);
+      overflow: hidden;
+      border-radius: rem(10);
+      z-index: 2;
+      position: relative;
+      display: block;
+    }
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: calc(((calc(100vw) - 100%) / 2) * -1);
+      width: 100vw;
+      bottom: 0;
+      height: 50%;
+      background-color: var(--bg);
+      z-index: 1;
+    }
+  }
+}
