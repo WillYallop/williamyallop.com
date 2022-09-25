@@ -2,6 +2,26 @@
 
 {% block head %}
 
+    <!-- schema for a single project example -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Project",
+        "name": "{{ project.data.title }}",
+        "description": "{{ project.data.summary }}",
+        "url": "{% if project.data.preview %}{{ project.data.preview }}{% else %}{{ project.data.npm }}{% endif %}",
+        "image": "{{ project.data.images.thumbnail }}",
+        "author": {
+            "@type": "Person",
+            "name": "William Yallop"
+        },
+        "dateCreated": "{{ project.data.date_created }}", 
+        "dateModified": "{{ project.data.date_modified }}",
+        "datePublished": "{{ project.data.date_published }}",
+        "keywords": "{{ project.data.technologies }}"
+    }
+    </script>
+
 {% endblock %}
 
 {% block mainContent %}

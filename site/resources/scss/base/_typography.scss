@@ -13,6 +13,7 @@
     }
     h2 {
       margin-bottom: rem(15);
+      margin-top: rem(25);
     }
     h3,
     h4,
@@ -20,9 +21,14 @@
     h6,
     p,
     a {
-      margin-bottom: rem(10);
+      margin-bottom: rem(15);
     }
-    li {
+    p,
+    li,
+    a {
+      font-size: rem(18);
+      line-height: 150%;
+      letter-spacing: rem(0.5);
     }
   }
 

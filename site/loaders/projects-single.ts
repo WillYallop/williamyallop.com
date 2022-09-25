@@ -24,6 +24,9 @@ interface Project {
   markdown?: string;
   technologies?: Array<string>;
   preview?: string;
+  date_created?: string;
+  date_modified?: string;
+  date_published?: string;
   images?: {
     thumbnail?: string;
     preview?: string;
@@ -120,6 +123,9 @@ export const projects: Array<Project> = [
   {
     title: "Anyrep",
     slug: "anyrep",
+    date_created: new Date("2022-08-03").toISOString(),
+    date_modified: new Date("2022-08-28").toISOString(),
+    date_published: new Date("2022-08-20").toISOString(),
     category: "website",
     repository: "",
     completed: true,

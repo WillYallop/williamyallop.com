@@ -281,11 +281,11 @@ exports["default"] = setActiveLinks;
 
 /***/ }),
 
-/***/ "./site/resources/ts/index.ts":
-/*!************************************!*\
-  !*** ./site/resources/ts/index.ts ***!
-  \************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ "./site/resources/ts/functions/gallery.ts":
+/*!************************************************!*\
+  !*** ./site/resources/ts/functions/gallery.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, exports) => {
 
 
 
@@ -300,6 +300,41 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var galleryInit = function galleryInit() {
+  var galleryContainer = document.querySelectorAll("[data-gallery-container]");
+
+  _toConsumableArray(galleryContainer).forEach(function (container) {
+    var containerHeight = container.clientHeight;
+    var containerPadding = parseInt(window.getComputedStyle(container).paddingTop);
+    var containerHeightMinusPadding = containerHeight - containerPadding * 2;
+    var slides = container.querySelectorAll("[data-gallery-slide]");
+
+    _toConsumableArray(slides).forEach(function (slide) {
+      var image = slide.querySelector("img");
+      var aspectRatio = image.naturalHeight / image.naturalWidth;
+      var width = containerHeightMinusPadding / aspectRatio;
+      slide.style.width = "".concat(width, "px");
+      slide.style.minWidth = "".concat(width, "px");
+    });
+  });
+};
+
+exports["default"] = galleryInit;
+
+/***/ }),
+
+/***/ "./site/resources/ts/index.ts":
+/*!************************************!*\
+  !*** ./site/resources/ts/index.ts ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
 
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
@@ -317,24 +352,16 @@ var toggler_1 = __importDefault(__webpack_require__(/*! @functionalities/toggler
 
 var animations_1 = __importDefault(__webpack_require__(/*! @functionalities/animations */ "./node_modules/@functionalities/animations/dist/index.js"));
 
+var gallery_1 = __importDefault(__webpack_require__(/*! ./functions/gallery */ "./site/resources/ts/functions/gallery.ts"));
+
 new toggler_1["default"]();
 new animations_1["default"]({
   threshold: 0.1
 });
-(0, active_links_1["default"])();
-var galleryContainer = document.querySelectorAll("[data-gallery-container]");
+(0, active_links_1["default"])(); // on page fully loaded
 
-_toConsumableArray(galleryContainer).forEach(function (container) {
-  var containerHeight = container.clientHeight;
-  var slides = container.querySelectorAll("[data-gallery-slide]");
-
-  _toConsumableArray(slides).forEach(function (slide) {
-    var image = slide.querySelector("img");
-    var aspectRatio = image.naturalHeight / image.naturalWidth;
-    var width = containerHeight / aspectRatio;
-    slide.style.width = "".concat(width, "px");
-    slide.style.minWidth = "".concat(width, "px");
-  });
+window.addEventListener("load", function () {
+  (0, gallery_1["default"])();
 });
 
 /***/ }),

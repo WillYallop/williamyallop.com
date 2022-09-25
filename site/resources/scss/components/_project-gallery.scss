@@ -2,13 +2,15 @@
 
 .project-gallery-root {
   overflow: hidden;
+  background-color: var(--bg-section-dark);
   &__wrapper {
-    overflow-x: scroll;
+    overflow: hidden;
   }
   &__gallery {
     display: flex;
     gap: rem(20);
-    height: rem(500);
+    height: rem(600);
+    overflow-x: scroll;
     picture {
       display: block;
       border-radius: rem(10);
@@ -19,6 +21,8 @@
         object-fit: contain;
       }
     }
+  }
+  &__image {
   }
   @include tablet {
     &__wrapper {

@@ -1,5 +1,5 @@
 <picture class="{{ class }}">
     <source srcset="{{ src | optimiseImage: "avif", size }}" type="image/avif" />
     <source srcset="{{ src | optimiseImage: "webp", size }}" type="image/webp" />
-    <img src="{{ src | optimiseImage: format, size }}" alt="{{ alt }}"> 
+    <img src="{{ src | optimiseImage: format, size }}" alt="{{ alt }}" loading="{{ loading }}"> 
 </picture>
