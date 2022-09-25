@@ -1,10 +1,17 @@
 // Types
 import { LoaderFunction } from "../../../core/types/config";
 // data
-import { projects, categories } from "../projects-single";
+import { projects, categories } from "../../data/projects";
 
 const projectLoader: LoaderFunction = async (params) => {
-  const projectsData = projects.map((project) => {
+  // order the projects by date_mofified
+  const orderedProjects = projects.sort((a, b) => {
+    return (
+      new Date(b.date_modified).getTime() - new Date(a.date_modified).getTime()
+    );
+  });
+
+  const projectsData = orderedProjects.map((project) => {
     return {
       title: project.title,
       slug: project.slug,

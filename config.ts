@@ -4,7 +4,10 @@ import projectLoader from "./site/loaders/global/projects";
 // route loaders
 import homepageLoader from "./site/loaders/homepage";
 import contactLoader from "./site/loaders/contact";
-import blogsLoader from "./site/loaders/blogs";
+import blogsLoader, {
+  blogsGroupLoader,
+  blogsGroupParamLookup,
+} from "./site/loaders/blogs";
 import {
   projectsSingleLoader,
   projectsParamLookup,
@@ -39,6 +42,12 @@ const routes: Array<RoutesObj> = [
     path: "/blogs",
     template: `${templatesDir}/blogs.liquid`,
     loaders: [blogsLoader],
+  },
+  {
+    path: "/blogs/:limit/:offset",
+    template: `${templatesDir}/blogs.liquid`,
+    loaders: [blogsGroupLoader],
+    paramLookup: blogsGroupParamLookup,
   },
   {
     path: "/blog/:slug",

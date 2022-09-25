@@ -306,22 +306,24 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 
 var galleryInit = function galleryInit() {
-  var galleryContainer = document.querySelectorAll("[data-gallery-container]");
+  setTimeout(function () {
+    var galleryContainer = document.querySelectorAll("[data-gallery-container]");
 
-  _toConsumableArray(galleryContainer).forEach(function (container) {
-    var containerHeight = container.clientHeight;
-    var containerPadding = parseInt(window.getComputedStyle(container).paddingTop);
-    var containerHeightMinusPadding = containerHeight - containerPadding * 2;
-    var slides = container.querySelectorAll("[data-gallery-slide]");
+    _toConsumableArray(galleryContainer).forEach(function (container) {
+      var containerHeight = container.clientHeight;
+      var containerPadding = parseInt(window.getComputedStyle(container).paddingTop);
+      var containerHeightMinusPadding = containerHeight - containerPadding * 2;
+      var slides = container.querySelectorAll("[data-gallery-slide]");
 
-    _toConsumableArray(slides).forEach(function (slide) {
-      var image = slide.querySelector("img");
-      var aspectRatio = image.naturalHeight / image.naturalWidth;
-      var width = containerHeightMinusPadding / aspectRatio;
-      slide.style.width = "".concat(width, "px");
-      slide.style.minWidth = "".concat(width, "px");
+      _toConsumableArray(slides).forEach(function (slide) {
+        var image = slide.querySelector("img");
+        var aspectRatio = image.naturalHeight / image.naturalWidth;
+        var width = containerHeightMinusPadding / aspectRatio;
+        slide.style.width = "".concat(width, "px");
+        slide.style.minWidth = "".concat(width, "px");
+      });
     });
-  });
+  }, 1);
 };
 
 exports["default"] = galleryInit;

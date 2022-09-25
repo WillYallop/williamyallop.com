@@ -8,4 +8,17 @@
     <!-- Section Header -->
     {% include '../components/section-header.liquid', title: blogs.title, description: blogs.description %}
 
+    {% for blog in blogs.list %}
+        <li>
+            <a href="/blog/{{ blog.slug }}">{{ blog.title }}</a>
+        </li>
+    {% endfor %}
+
+    {% if blogs.next %}
+        <a href="{{ blogs.next }}">Next</a>
+    {% endif %}
+    {% if blogs.previous %}
+        <a href="{{ blogs.previous }}">Previous</a>
+    {% endif %}
+
 {% endblock %}

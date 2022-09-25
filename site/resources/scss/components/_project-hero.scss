@@ -4,6 +4,9 @@
   background-color: var(--bg-section);
   overflow: hidden;
   &__back {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     width: 100%;
     height: rem(40);
     background-color: var(--bg-section-dark);
