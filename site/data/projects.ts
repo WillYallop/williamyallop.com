@@ -128,6 +128,38 @@ export const projects: Array<Project> = [
     },
     markdownPath: "/projects/cover-maker.md",
   },
+  {
+    title: "Static Site Generator",
+    slug: "static-site-generator",
+    date_created: new Date("2022-09-06").toISOString(),
+    date_modified: new Date("2022-09-24").toISOString(),
+    date_published: new Date("2022-09-11").toISOString(),
+    category: "boilerplate",
+    repository: "https://github.com/WillYallop/static-site-generator",
+    completed: true,
+    summary:
+      "This is a minimal, but very flexible and powerful static site generator that is built around Express and LiquidJS. It also has filters for image optimisation and markdown.",
+    technologies: ["Node", "Typescript", "Express", "LiquidJS", "FS", "Sharp"],
+    images: {
+      thumbnail: "static-site-generator/thumbnail.jpg",
+      preview: "static-site-generator/preview.jpg",
+      gallery: [
+        {
+          src: "static-site-generator/gallery-github-preview.jpg",
+          alt: "A preview of the github repository",
+        },
+        {
+          src: "static-site-generator/gallery-tags-filters.jpg",
+          alt: "The tags and filters page, explaining what's available in LiquidJS",
+        },
+        {
+          src: "static-site-generator/gallery-mobile.jpg",
+          alt: "An example of the site on mobile",
+        },
+      ],
+    },
+    markdownPath: "/projects/static-site-generator.md",
+  },
 ];
 
 // Project categories

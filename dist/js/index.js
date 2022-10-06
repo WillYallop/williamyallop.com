@@ -323,7 +323,7 @@ var galleryInit = function galleryInit() {
         slide.style.minWidth = "".concat(width, "px");
       });
     });
-  }, 1);
+  }, 50);
 };
 
 exports["default"] = galleryInit;
