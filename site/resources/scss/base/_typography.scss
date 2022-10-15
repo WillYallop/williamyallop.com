@@ -30,6 +30,14 @@
       line-height: 150%;
       letter-spacing: rem(0.5);
     }
+
+    ol {
+      list-style-type: circle;
+      padding-left: rem(20);
+      li {
+        margin-bottom: rem(10);
+      }
+    }
   }
 
   // ------------------------------------

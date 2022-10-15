@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@functionalities/animations": "^1.0.0",
-    "@functionalities/toggler": "^1.2.0"
+    "@functionalities/toggler": "^1.2.0",
+    "highlight.js": "^11.6.0"
   }
 }
