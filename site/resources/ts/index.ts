@@ -12,4 +12,5 @@ setActiveLinks();
 // on page fully loaded
 window.addEventListener("load", () => {
   galleryInit();
+  document.body.classList.remove('preload');
 });
