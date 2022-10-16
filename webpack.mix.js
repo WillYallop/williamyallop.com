@@ -20,7 +20,10 @@ mix
         ],
         whitelist: [
             'active'
-        ]
+        ],
+        whitelistPatterns: [
+            /active$/
+        ],
     })
     .minify(`${outputDir}/css/main.css`);
             
