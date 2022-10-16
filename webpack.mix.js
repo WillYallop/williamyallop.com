@@ -18,6 +18,9 @@ mix
             "site/**/*.ts",
             "site/**/*.liquid",
         ],
+        whitelist: [
+            'active'
+        ]
     })
     .minify(`${outputDir}/css/main.css`);
             
