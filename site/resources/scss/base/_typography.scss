@@ -67,6 +67,7 @@
 // Text element defaults
 h1 {
   font-size: clamp(rem(20), 10vw, rem(32));
+  line-height: 110%;
   font-weight: 700;
   margin-bottom: rem(5);
 }

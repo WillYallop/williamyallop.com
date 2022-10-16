@@ -1,7 +1,10 @@
 @use "./index.scss" as *;
 
 .section-header-root {
-  p {
-    max-width: rem(900);
-  }
+    h1 {
+        word-break: break-word;
+    }
+    p {
+        max-width: rem(900);
+    }
 }

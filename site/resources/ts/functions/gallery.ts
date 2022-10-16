@@ -21,6 +21,6 @@ const galleryInit = () => {
         slide.style.minWidth = `${width}px`;
       });
     });
-  }, 50);
+  }, 100);
 };
 export default galleryInit;

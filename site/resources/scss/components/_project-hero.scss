@@ -26,6 +26,7 @@
     h1 {
       margin-bottom: rem(20);
       font-size: clamp(rem(20), 10vw, rem(48));
+        word-break: break-word;
     }
   }
   &__technologies {
