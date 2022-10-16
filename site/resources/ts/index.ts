@@ -10,6 +10,4 @@ new Animations({
 setActiveLinks();
 
 // on page fully loaded
-window.addEventListener("load", () => {
-  galleryInit();
-});
+galleryInit();
