@@ -8,6 +8,11 @@
   left: rem(300);
   right: 0;
   z-index: 1;
+  padding: 0 rem(20);
+  p {
+    display: inline;
+    text-align: center;
+  }
   &__spacer {
     height: rem(60);
     display: block;
@@ -18,5 +23,13 @@
 @include tablet {
   .footer-root {
     left: 0;
+  }
+}
+@include mobile {
+  .footer-root {
+    height: rem(100);
+    &__spacer {
+      height: rem(100);
+    }
   }
 }

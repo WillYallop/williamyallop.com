@@ -208,7 +208,7 @@ export const projects: Array<Project> = [
     technologies: ["Typescript"],
     images: {
       thumbnail: "functionalities/toggler_thumbnail.jpg",
-      preview: "functionalities/preview.jpg",
+      preview: "functionalities/toggler_thumbnail.jpg",
     },
     markdownPath: "/projects/functionalities-toggler.md",
   },
@@ -228,7 +228,7 @@ export const projects: Array<Project> = [
     technologies: ["Typescript"],
     images: {
       thumbnail: "functionalities/stickyheader_thumbnail.jpg",
-      preview: "functionalities/preview.jpg",
+      preview: "functionalities/stickyheader_thumbnail.jpg",
     },
     markdownPath: "/projects/functionalities-stickyheader.md",
   },
@@ -248,7 +248,7 @@ export const projects: Array<Project> = [
     technologies: ["Typescript"],
     images: {
       thumbnail: "functionalities/animations_thumbnail.jpg",
-      preview: "functionalities/preview.jpg",
+      preview: "functionalities/animations_thumbnail.jpg",
     },
     markdownPath: "/projects/functionalities-animations.md",
   },
@@ -268,7 +268,7 @@ export const projects: Array<Project> = [
     technologies: ["Typescript"],
     images: {
       thumbnail: "functionalities/formhandler_thumbnail.jpg",
-      preview: "functionalities/preview.jpg",
+      preview: "functionalities/formhandler_thumbnail.jpg",
     },
     markdownPath: "/projects/functionalities-formhandler.md",
   },
@@ -288,7 +288,7 @@ export const projects: Array<Project> = [
     technologies: ["Typescript"],
     images: {
       thumbnail: "functionalities/disclosure_thumbnail.jpg",
-      preview: "functionalities/preview.jpg",
+      preview: "functionalities/disclosure_thumbnail.jpg",
     },
     markdownPath: "/projects/functionalities-disclosure.md",
   },
@@ -308,9 +308,123 @@ export const projects: Array<Project> = [
     technologies: ["Typescript", "Express", "AWS S3", "Sharp"],
     images: {
       thumbnail: "functionalities/mediakit_thumbnail.jpg",
-      preview: "functionalities/preview.jpg",
+      preview: "functionalities/mediakit_thumbnail.jpg",
     },
     markdownPath: "/projects/functionalities-mediakit.md",
+  },
+  {
+    title: "Melody Melon",
+    slug: "melodymelon",
+    date_created: new Date("2020-08-04").toISOString(),
+    date_modified: new Date("2020-12-06").toISOString(),
+    date_published: new Date("2020-12-06").toISOString(),
+    category: "website",
+    preview: "https://melodymelon.williamyallop.com",
+    repository: "https://github.com/WillYallop/melody-melon",
+    completed: true,
+    summary:
+      "Meloody Melon is a website built with NuxtJS, that aims to provide curated playlists for every occasion. It sports a unique design and a quick access playlist sidebar.",
+    technologies: ["NuxtJS", "Vue", "SCSS"],
+    images: {
+      thumbnail: "melody-melon/thumbnail.jpg",
+      preview: "melody-melon/preview.jpg",
+      gallery: [
+        {
+          src: "melody-melon/gallery-home-mobile.jpg",
+          alt: "Melody Melon homepage on mobile",
+        },
+        {
+          src: "melody-melon/preview.jpg",
+          alt: "Melody Melon homepage on desktop",
+        },
+        {
+          src: "melody-melon/gallery-playlist-page.jpg",
+          alt: "Melody Melon playlist page",
+        },
+      ],
+    },
+    markdownPath: "/projects/melodymelon.md",
+  },
+  {
+    title: "Exodia Fitness - Website",
+    slug: "exodia-fitness-website",
+    date_created: new Date("2021-02-15").toISOString(),
+    date_modified: new Date("2021-05-23").toISOString(),
+    date_published: new Date("2021-02-15").toISOString(),
+    category: "website",
+    preview: "https://exodiafitness.williamyallop.com",
+    repository: "https://github.com/WillYallop/exodia-home",
+    completed: true,
+    summary:
+      "This is the marketing website for Exodia Fitness. A fitness tracking app that I built to learn VueJS, Stripe and Express.",
+    technologies: ["HTML", "SCSS", "JS"],
+    images: {
+      thumbnail: "exodia/website_thumbnail.jpg",
+      preview: "exodia/website_preview.jpg",
+      gallery: [
+        {
+          src: "exodia/website_gallery-1.jpg",
+          alt: "Mobile view of the Exodia Fitness website homepage",
+        },
+        {
+          src: "exodia/website_gallery-2.jpg",
+          alt: "Desktop view of the Exodia Fitness website homepage",
+        },
+        {
+          src: "exodia/website_gallery-3.jpg",
+          alt: "Desktop view of the Exodia Fitness website homepage",
+        },
+        {
+          src: "exodia/website_gallery-4.jpg",
+          alt: "Desktop view of the Exodia Fitness website homepage",
+        },
+      ],
+    },
+    markdownPath: "/projects/exodia-fitness-website.md",
+  },
+  {
+    title: "Exodia Fitness - App",
+    slug: "exodia-fitness-app",
+    date_created: new Date("2020-08-03").toISOString(),
+    date_modified: new Date("2021-09-25").toISOString(),
+    date_published: new Date("2021-09-25").toISOString(),
+    category: "web_app",
+    completed: true,
+    repository: "https://github.com/WillYallop/exodia-fitness",
+    summary:
+      "Plan workouts, track progression and monitor your health with a number of features including a water tracker, a weight tracker and a range of fitbit data.",
+    technologies: ["Vue", "Nuxt", "SCSS"],
+    images: {
+      thumbnail: "exodia/app_thumbnail.jpg",
+      preview: "exodia/app_preview.jpg",
+      gallery: [
+        {
+          src: "exodia/app_gallery-1.jpg",
+          alt: "Exodia Fitness app homepage",
+        },
+        {
+          src: "exodia/app_gallery-2.jpg",
+          alt: "The 'Improve Deadlift' exercise plan landing page",
+        },
+        {
+          src: "exodia/app_gallery-3.jpg",
+          alt: "The 'Improve Deadlift' exercise plan course page",
+        },
+        {
+          src: "exodia/app_gallery-4.jpg",
+          alt: "The settings page",
+        },
+        {
+          src: "exodia/app_gallery-5.jpg",
+          alt: "The pricing plan page",
+        },
+        {
+          src: "exodia/app_gallery-6.jpg",
+          alt: "The sign in page",
+        },
+      ],
+    },
+    markdownPath: "/projects/exodia-fitness-app.md",
   },
 ];
 

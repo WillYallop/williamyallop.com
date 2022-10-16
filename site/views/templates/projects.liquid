@@ -1,11 +1,74 @@
 {% layout "../layout/main.liquid" %}
 
 {% block head %}
+    <title>{{ seo.title }}</title>
+    <meta name="description" content="{{ seo.description }}">
+    <meta name="twitter:title" content="{{ seo.title }}">
+    <meta name="twitter:description" content="{{ seo.description }}">
+    <meta property="og:title" content="{{ seo.title }}">
+    <meta property="og:description" content="{{ seo.description }}">
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "William Yallop",
+        "url": "https://williamyallop.com",
+        "jobTitle": "Full Stack Developer",
+        "gender": "male",
+        "image": "https://williamyallop.com/static-images/profile-picture.jpg",
+        "sameAs": [
+            "https://github.com/WillYallop",
+            "https://www.linkedin.com/in/william-yallop-633429184/"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "GRIT Digital",
+            "url": "https://gritdigital.co.uk"
+        },
+        "email": "hello@williamyallop.com",
+        "birthDate": "1999-10-02",
+        "national": "British",
+        "knowsLanguage": [
+            "English"
+        ],
+        "knowsAbout": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "PHP",
+            "SQL",
+            "Bash",
+            "Git",
+            "Linux",
+            "Windows",
+            "MacOS",
+            "Android",
+            "iOS",
+            "React",
+            "Vue",
+            "Node",
+            "Express",
+            "WordPress",
+            "GraphQL",
+            "REST",
+            "MongoDB",
+            "MySQL",
+            "PostgreSQL",
+            "Firebase",
+            "AWS",
+            "Bitbucket",
+            "GitHub",
+            "Trello",
+            "Slack"
+        ]
+    }
+    </script>
 {% endblock %}
 
 {% block mainContent %}
-    <!-- Section Header -->
-    {% include '../components/section-header.liquid', title: home.title, description: home.description %}
-    <!-- Projects -->
-    {% include '../components/projects-list.liquid' %}
+  <!-- Section Header -->
+  {% include '../components/section-header.liquid', title: home.title, description: home.description %}
+  <!-- Projects -->
+  {% include '../components/projects-list.liquid' %}
 {% endblock %}

@@ -2,6 +2,13 @@
 
 {% block head %}
 
+    <title>{{ project.data.title }} | William Yallop</title>
+    <meta name="description" content="{{ project.data.summary }}">
+    <meta name="twitter:title" content="{{ project.data.title }} | William Yallop">
+    <meta name="twitter:description" content="{{ project.data.summary }}">
+    <meta property="og:title" content="{{ project.data.title }} | William Yallop">
+    <meta property="og:description" content="{{ project.data.summary }}">
+
     <!-- schema for a single project example -->
     <script type="application/ld+json">
     {

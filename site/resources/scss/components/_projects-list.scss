@@ -106,7 +106,7 @@
     }
     &__textarea {
       padding: rem(15);
-      h3 {
+      h2 {
         font-size: rem(18);
       }
       p {
@@ -124,6 +124,10 @@
   @include mobile {
     &__filter {
       padding: rem(40) 0 0 rem(20);
+    }
+    &__items {
+      margin-top: rem(20) !important;
+      padding: 0 20px;
     }
   }
 }

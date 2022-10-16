@@ -1,0 +1,3 @@
+Exodia Fitness was the first large-scale web app that I created and "completed". It allowed users to build training plans, track their progression, track their water intake and weight and follow curated training plans. It also had an integration with the Fitbit API so users could see their daily calories burnt, along with their heart rate and some other stats Fitbit would track.
+
+The app had an accompanying Express REST API which received all of its data. As it was also a PWA, this site was bundled up and deployed on the Google Play Store.

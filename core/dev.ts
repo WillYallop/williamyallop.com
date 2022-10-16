@@ -32,7 +32,7 @@ app.use((req, res) => {
 
 // ------------------------------------
 // START SERVER
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const server = http.createServer(app);
 server.listen(port);
 server.on("listening", () => {

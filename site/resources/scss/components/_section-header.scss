@@ -1,4 +1,7 @@
 @use "./index.scss" as *;
 
 .section-header-root {
+  p {
+    max-width: rem(900);
+  }
 }

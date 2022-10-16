@@ -1,21 +1,21 @@
 // global loaders
 import menuLoader from "./site/loaders/global/menu";
+import seoLoader from "./site/loaders/global/seo";
 import projectLoader from "./site/loaders/global/projects";
 // route loaders
 import homepageLoader from "./site/loaders/homepage";
-import contactLoader from "./site/loaders/contact";
-import blogsLoader, {
-  blogsGroupLoader,
-  blogsGroupParamLookup,
-} from "./site/loaders/blogs";
+// import contactLoader from "./site/loaders/contact";
+import blogsLoader from //   blogsGroupLoader,
+//   blogsGroupParamLookup,
+"./site/loaders/blogs";
 import {
   projectsSingleLoader,
   projectsParamLookup,
 } from "./site/loaders/projects-single";
-import {
-  blogSingleLoader,
-  blogsParamLookup,
-} from "./site/loaders/blogs-single";
+// import {
+//   blogSingleLoader,
+//   blogsParamLookup,
+// } from "./site/loaders/blogs-single";
 // Types
 import { GeneratorConfig, RoutesObj } from "./core/types/config";
 
@@ -33,33 +33,33 @@ const routes: Array<RoutesObj> = [
     loaders: [projectsSingleLoader],
     paramLookup: projectsParamLookup,
   },
-  {
-    path: "/contact",
-    template: `${templatesDir}/contact.liquid`,
-    loaders: [contactLoader],
-  },
+  //   {
+  //     path: "/contact",
+  //     template: `${templatesDir}/contact.liquid`,
+  //     loaders: [contactLoader],
+  //   },
   {
     path: "/blogs",
     template: `${templatesDir}/blogs.liquid`,
     loaders: [blogsLoader],
   },
-  {
-    path: "/blogs/:limit/:offset",
-    template: `${templatesDir}/blogs.liquid`,
-    loaders: [blogsGroupLoader],
-    paramLookup: blogsGroupParamLookup,
-  },
-  {
-    path: "/blog/:slug",
-    template: `${templatesDir}/blog-single.liquid`,
-    loaders: [blogSingleLoader],
-    paramLookup: blogsParamLookup,
-  },
+  //   {
+  //     path: "/blogs/:limit/:offset",
+  //     template: `${templatesDir}/blogs.liquid`,
+  //     loaders: [blogsGroupLoader],
+  //     paramLookup: blogsGroupParamLookup,
+  //   },
+  //   {
+  //     path: "/blog/:slug",
+  //     template: `${templatesDir}/blog-single.liquid`,
+  //     loaders: [blogSingleLoader],
+  //     paramLookup: blogsParamLookup,
+  //   },
 ];
 
 const config: GeneratorConfig = {
   routes,
-  globalLoaders: [menuLoader, projectLoader],
+  globalLoaders: [menuLoader, projectLoader, seoLoader],
   outputDir: "dist",
   siteRoot: "site",
   siteUrl: "http://localhost:3000",

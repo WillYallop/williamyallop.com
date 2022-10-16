@@ -31,11 +31,21 @@
       letter-spacing: rem(0.5);
     }
 
-    ol {
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    ol,
+    ul {
       list-style-type: circle;
       padding-left: rem(20);
+      margin-bottom: 20px;
+
       li {
-        margin-bottom: rem(10);
+        margin-bottom: rem(5);
       }
     }
   }

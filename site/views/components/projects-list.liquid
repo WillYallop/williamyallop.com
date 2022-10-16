@@ -25,7 +25,7 @@
               {{ project.category | category-filter }}
             </div>
             {% if project.completed %}
-              <span class="project-list-root__item__image__complete l--f l--f-j-c l--f-a-c" aria-label="complete">
+              <span class="project-list-root__item__image__complete l--f l--f-j-c l--f-a-c">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
                 </svg>
@@ -39,10 +39,8 @@
             </div>
           </div>
           <div class="project-list-root__item__textarea">
-            <h3>{{ project.title }}
-            </h3>
-            <p>{{ project.summary }}
-            </p>
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.summary }}</p>
           </div>
         </a>
       </li>

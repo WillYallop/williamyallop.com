@@ -12,7 +12,11 @@
   transition: left 0.3s ease;
   z-index: 9;
   &__inner {
-    padding: rem(40) rem(20);
+    padding: rem(40) rem(20) rem(20);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
   }
   &__pp {
     width: rem(70);
@@ -20,6 +24,12 @@
     border-radius: 50%;
     background-color: var(--bg);
     margin-right: rem(15);
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
   &__nav {
     ul {
@@ -67,6 +77,38 @@
     border: none;
     cursor: pointer;
     z-index: 10;
+    svg {
+      height: rem(20);
+      width: rem(20);
+      fill: white;
+    }
+  }
+
+  &__footer-link {
+    display: flex;
+    margin-top: 20px;
+    a {
+      @include animate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      background-color: rgba(14, 14, 14, 0.6);
+      height: rem(40);
+      width: rem(40);
+      border-radius: 50%;
+      &:hover {
+        background-color: rgba(14, 14, 14, 0.8);
+      }
+      &:first-child {
+        margin-right: rem(10);
+      }
+      svg {
+        height: rem(20);
+        width: rem(20);
+        fill: white;
+      }
+    }
   }
 
   @include tablet {

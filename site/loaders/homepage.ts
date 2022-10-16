@@ -4,9 +4,9 @@ import { LoaderFunction } from "../../core/types/config";
 const homepageLoader: LoaderFunction = async () => {
   return {
     home: {
-      title: "Projects",
+      title: "My projects",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, justo non fringilla consequat, erat elit sollicitudin sem.",
+        "Hi, my name is Will and I'm a fullstack web developer. Below you'll find a selection of projects I've created over the years, ranging from websites, web apps, libraries and everything else in between. ",
     },
   };
 };

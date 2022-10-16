@@ -5,14 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{  "/css/main.css" | relativeAsset }}" /> {% block head %} {% endblock %}
+    <meta name="keywords" content="{{ seo.keywords }}">
+    <meta name="robots" content="{{ seo.robots }}">
+    <meta name="author" content="{{ seo.author }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://williamyallop.com/static-images/card.jpg">
+
+    <meta property="og:image" content="https://williamyallop.com/static-images/card.jpg">
+    <meta property="og:url" content="https://williamyallop.com">
+    <meta property="og:site_name" content="William Yallop">
+    <meta property="og:type" content="website">
+
     <script>
         window.addEventListener("DOMContentLoaded", function () { document.body.classList.remove('preload'); });
     </script>
   </head>
-  <body class="preload">
+  <body class="preload" data-toggler-receiver="navigtion-sidebar">
     {% include '../components/navigation.liquid' %}
-    <main class="layout-main">
-        {% block mainContent %} {% endblock %}
+    <main class="layout-main" data-toggler-receiver="navigtion-sidebar">
+        <div class="layout-main__inner">
+            {% block mainContent %} {% endblock %}
+        </div>
     </main>
     {% include '../components/footer.liquid' %}
   </body>

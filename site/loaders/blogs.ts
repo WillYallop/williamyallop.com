@@ -29,7 +29,8 @@ const getBlogsGroup = (offset: string, limit: string) => {
   return {
     blogs: {
       title: "Blogs",
-      description: "Stay up to date with ",
+      description:
+        "Learn about my current projects and tech that im experimenting with.",
       list: blogsGroup,
       next: blogs.length > end ? `/blogs/${limit}/${end}` : null,
       previous: previous,
