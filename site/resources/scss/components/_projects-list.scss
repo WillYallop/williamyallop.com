@@ -1,6 +1,7 @@
 @use "./index.scss" as *;
 
 .project-list-root {
+    padding-bottom: rem(40);
   &__filter {
     padding: rem(40) 0 0 rem(40);
     display: flex;

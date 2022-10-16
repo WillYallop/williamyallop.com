@@ -5,7 +5,7 @@
                 <ul class="project-gallery-root__gallery l--sp-t l--sp-b l--sp-h" data-gallery-container>
                     {% for image in project.data.images.gallery %}
                         <li class="project-gallery-root__image" data-gallery-slide>
-                            {% include '../partials/picture.liquid', src: image.src, format: 'jpeg', size: 1200, loading: 'lazy' %}
+                            {% include '../partials/picture.liquid', src: image.src, format: 'jpeg', size: 1200, loading: 'eager' %}
                         </li>
                     {% endfor %}
                 </ul>

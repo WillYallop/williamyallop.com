@@ -34,7 +34,11 @@
             <!-- inner -->
             <div class="project-list-root__item__image__inner l__cover">
               {% if project.images.thumbnail %}
-                {% include '../partials/picture.liquid', src: project.images.thumbnail, format: 'jpeg', size: 600, loading: 'lazy' %}
+                {% assign loadingType = 'lazy' %}
+                {% if forloop.index0 == 0 %}
+                    {% assign loadingType = 'eager' %}
+                {% endif %}
+                {% include '../partials/picture.liquid', src: project.images.thumbnail, format: 'jpeg', size: 600, loading: loadingType %}
               {% endif %}
             </div>
           </div>

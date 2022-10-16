@@ -38,7 +38,15 @@
       }
     }
 
-    ol,
+    ol {
+        list-style-type: circle !important;
+        padding-left: rem(20) !important;
+        margin-bottom: 20px !important;
+  
+        li {
+          margin-bottom: rem(5)     !important;
+        }
+    }
     ul {
       list-style-type: circle;
       padding-left: rem(20);
