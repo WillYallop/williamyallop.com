@@ -1,1 +1,0 @@
-This is the landing page / marketing site for the Exodia Fitness APP. It sports a striking, but rather simple design. This is just a standard multipage website, built in HTML, SCSS/CSS and JS only. No fancy frameworks.

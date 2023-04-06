@@ -1,0 +1,131 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import { SITE_URL } from "../../constants";
+
+/////////////////////////////////
+// COMPONENTS
+////////////////////////////////
+import MainLayout from "../../layouts/Main.astro";
+import ProjectContent from "../../components/blocks/ProjectContent.astro";
+import ProjectSingleCarousel from "../../components/blocks/ProjectSingleCarousel.astro";
+import SocialLink from "../../components/partials/SocialLink.astro";
+
+/////////////////////////////////
+// DATA
+////////////////////////////////
+
+export async function getStaticPaths() {
+  const posts = await getCollection("project");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"project">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const SCHEMA = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Project",
+  name: post.data.title,
+  description: post.data.description,
+  url: `${SITE_URL}/project/${post.slug}/`,
+  image: `${SITE_URL}${post.data.thumbnail}`,
+  author: {
+    "@type": "Person",
+    name: "William Yallop",
+  },
+});
+---
+
+<MainLayout
+  type="project"
+  title={`${post.data.title} | Project | William Yallop`}
+  description={post.data.description}
+  ogTitle={post.data.title}
+  ogDescription={post.data.description}
+  twitterTitle={post.data.title}
+  twitterDescription={post.data.description}
+  metaImage={post.data.thumbnail}
+  breadcrumbs={[
+    {
+      text: "Projects",
+      href: "/",
+    },
+    {
+      text: post.data.title,
+      href: `/project/${post.slug}/`,
+    },
+  ]}
+>
+  <ProjectSingleCarousel slot="media" slides={post.data.slides || []} />
+  <animate-container
+    slot="info"
+    class="typography py-10 md:py-0 border-b border-b-background-secondary mb-2.5 md:mb-0 md:border-b-0 w-full"
+    animate="true"
+    on="visible"
+    reset="true"
+    type="fade-in"
+  >
+    <h1>{post.data.title}</h1>
+    {
+      post.data.technologies.length > 0 && (
+        <ul class="mb-2">
+          {[...post.data.technologies].map((tech) => {
+            return (
+              <li class="inline-block mr-2.5 mb-2.5 bg-white rounded-lg px-2.5 ">
+                <span class="text-xs text-background uppercase font-bold">
+                  {tech}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      )
+    }
+    <ul class="flex mt-5 flex-wrap gap-2.5">
+      {
+        post.data.website && (
+          <li>
+            <SocialLink
+              href={post.data.website}
+              icon="website"
+              title="Visit the website"
+              blank={true}
+            />
+          </li>
+        )
+      }
+      {
+        post.data.github && (
+          <li>
+            <SocialLink
+              href={post.data.github}
+              icon="github"
+              title="Visit the Github"
+              blank={true}
+            />
+          </li>
+        )
+      }
+      {
+        post.data.npm && (
+          <li>
+            <SocialLink
+              href={post.data.npm}
+              icon="npm"
+              title="Visit the NPM"
+              blank={true}
+            />
+          </li>
+        )
+      }
+    </ul>
+  </animate-container>
+  <ProjectContent slot="content">
+    <Content />
+  </ProjectContent>
+  <script slot="head" type="application/ld+json" set:html={SCHEMA}></script>
+</MainLayout>

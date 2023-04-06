@@ -1,0 +1,316 @@
+---
+title: "Functionalities - Toggler"
+description: "Toggler is a frontend utility package that's sole purpose is to make class toggling easier. It's 100% markup/attribute based, so no extra JS/TS is required!"
+filterCategory: "package"
+order: 7
+featured: false
+technologies: ["Typescript"]
+
+website: ""
+npm: "https://www.npmjs.com/package/@functionalities/toggler"
+github: "https://github.com/WillYallop/functionalities/tree/main/packages/toggler"
+
+thumbnail: "/functionalities/toggler_thumbnail.jpg"
+projectSlider: "/functionalities/slide1.jpg"
+slides:
+  [
+    {
+      title: "GitHub repository",
+      type: "image",
+      image: "/functionalities/slide1.jpg",
+    },
+  ]
+---
+
+## Introduction
+
+Toggler is a frontend utility package that's sole purpose is to make class toggling easier. It's 100% markup/attribute based, so once the package is included, you won't have to add any further JS/TS. The two core attributes and ideas of the package are that you have both toggles and receivers. Togglers trigger all receivers and other togglers with the same value and add a class to them. Simple.
+
+## Install
+
+```
+npm install @functionalities/toggler --save
+```
+
+## Features
+
+- Configured in markup.
+- Programatically set state of togglers
+- Execute functions from togglers.
+- Custom active classes.
+- Default state attribute for togglers.
+- Togglers can close other unrelated togglers.
+- Create multi togglers that keep children togglers staet in sync.
+
+## Example
+
+```typescript
+import Toggler from "@functionalities/toggler";
+
+new Toggler();
+```
+
+```html
+<button class="toggler-btn" data-toggler="button" data-toggler-state="true">
+  <span class="toggler-btn__on">Active</span>
+  <span class="toggler-btn__off">Not active</span>
+</button>
+```
+
+> Simple example markup.
+
+```html
+<button
+  class="toggler-btn"
+  data-toggler="button"
+  data-toggler-state="true"
+  data-toggler-close="tab-1, tab-2, tab-3"
+>
+  <span class="toggler-btn__on">SHOWING TAB SECTION</span>
+  <span class="toggler-btn__off">HIDING TAB SECTION</span>
+</button>
+<div class="toggler-btn__reciever" data-toggler-receiver="button">
+  <nav class="toggler-nav">
+    <ul>
+      <li
+        data-toggler="tab-1"
+        data-toggler-state="true"
+        data-toggler-close="tab-2, tab-3"
+      >
+        Tab 1
+      </li>
+      <li data-toggler="tab-2" data-toggler-close="tab-1, tab-3">Tab 2</li>
+      <li data-toggler="tab-3" data-toggler-close="tab-1, tab-2">Tab 3</li>
+    </ul>
+  </nav>
+  <!-- Tab 1 -->
+  <div class="toggler-tab" data-toggler-receiver="tab-1">
+    <h3>Tab 1</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod,
+      nisi eget consectetur consectetur, nisi nisi, nisi nisi, nisi nisi.
+    </p>
+  </div>
+  <!-- Tab 2 -->
+  <div class="toggler-tab" data-toggler-receiver="tab-2">
+    <h3>Tab 2</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod,
+      nisi eget consectetur consectetur, nisi nisi, nisi nisi, nisi nisi.
+    </p>
+  </div>
+  <!-- Tab 3 -->
+  <div class="toggler-tab" data-toggler-receiver="tab-3">
+    <h3>Tab 3</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod,
+      nisi eget consectetur consectetur, nisi nisi, nisi nisi, nisi nisi.
+    </p>
+  </div>
+</div>
+```
+
+> A more complex example, that will reveal a container that has tabs. Each tab will close the other tabs and reveal its content on a click. See the playground-fr app in the repo for the demo.
+
+## Methods
+
+## Toggle
+
+If you need to programatically update the state of a toggler, you can use the toggle method exposed on the Toggler instance. Here is an example:
+
+```typescript
+const togglerInstance = new Toggler();
+
+button.addEventListener("click", () => {
+  togglerInstance.toggle("all-tabs");
+  // togglerInstance.toggle("all-tabs", true);
+  // togglerInstance.toggle("all-tabs", false);
+});
+```
+
+The first paramater of the toggle method is the togglers key - this is required. The second paramater is optional, if left blank the toggler will toggle the state on and off, if a boolean is passed - the toggler will have its state set to that value.
+
+## Attribute
+
+### data-toggler
+
+This is the entry point attribute that you use to define a toggler (an element used to trigger a class onto a receiver). Typically this would be added to a button element. This must have a value assigned to it. Also, This value cannot have a string with a space in it.
+
+The only functional difference between a toggler and a receiver is that a toggler has a click event attached to it and it can have the class, state and close attributes as well. If you have multiple togglers with the same value, these will just act as receivers unless they are the ones being clicked.
+
+```html
+<button data-toggler="my-toggler">Toggler</button>
+```
+
+### data-toggler-receiver
+
+A toggler receiver has the toggler active class toggled on it when its matching data-toggler is clicked. You can have multiple receivers sharing the same value.
+
+```html
+<button data-toggler="my-toggler">Toggler</button>
+<div data-toggler-receiver="my-toggler">Content 1</div>
+<div data-toggler-receiver="my-toggler">Content 2</div>
+```
+
+### data-toggler-class
+
+This toggler class attribute tells the package on init what active class the toggler and receivers of the same value should have toggled on and off. By default its set to `active`. This class is applied to all togglers and all receivers with the same value.
+
+```html
+<button
+  class="custom-active-class"
+  data-toggler="my-toggler"
+  data-toggler-class="custom-active-class"
+>
+  Toggler
+</button>
+<div class="custom-active-class" data-toggler-receiver="my-toggler">
+  content
+</div>
+```
+
+### data-toggler-state
+
+The toggler state attribute tells the package on init what the default state of the toggler should be. By default, it is set to false.
+
+```html
+<style>
+  .toggler-content {
+    display: none;
+  }
+  .toggler-content.active {
+    display: block;
+  }
+</style>
+
+<button class="active" data-toggler="my-toggler" data-toggler-state="true">
+  Toggler
+</button>
+<div class="toggler-content active" data-toggler-receiver="my-toggler">
+  content
+</div>
+```
+
+> In this example, the content would be visible on load.
+
+### data-toggler-close
+
+This is one of the more powerful attributes. If you set this on a toggler, all other togglers with the values specified in this attribute will be toggled off on click.
+
+```html
+<button data-toggler="tab-1" data-toggler-close="tab-2, tab-3">Tab 1</button>
+<button data-toggler="tab-2" data-toggler-close="tab-1, tab-3">Tab 2</button>
+<button data-toggler="tab-3" data-toggler-close="tab-1, tab-2">Tab 3</button>
+
+<div data-toggler-receiver="tab-1">Tab 1 content</div>
+<div data-toggler-receiver="tab-2">Tab 2 content</div>
+<div data-toggler-receiver="tab-3">Tab 3 content</div>
+```
+
+### data-toggler-targets
+
+A powerful attribute that will allow the element it's placed on to toggle multiple `data-toggler`'s based on its state. This could be used on an 'all' button in a filter for example. Other attributes like `data-toggler-class` and `data-toggle-state` both work on this attribute as well, note, if the state for this is set to true, on load all of its targets, will have their state set to true regardless of their default state.
+
+```html
+<nav class="toggler-nav">
+  <ul>
+    <li
+      data-toggler="all-filters"
+      data-toggler-targets="filter-1, filter-2, filter-3"
+      data-toggler-state="true"
+    >
+      All
+    </li>
+    <li data-toggler="filter-1">Filter 1</li>
+    <li data-toggler="filter-2">Filter 2</li>
+    <li data-toggler="filter-3">Filter 3</li>
+  </ul>
+</nav>
+<!-- Tab 1 -->
+<div class="toggler-tab" data-toggler-receiver="filter-1">
+  <h3>Filter 1</h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisi
+    eget consectetur consectetur, nisi nisi, nisi nisi, nisi nisi.
+  </p>
+</div>
+<!-- Tab 2 -->
+<div class="toggler-tab" data-toggler-receiver="filter-2">
+  <h3>Filter 2</h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisi
+    eget consectetur consectetur, nisi nisi, nisi nisi, nisi nisi.
+  </p>
+</div>
+<!-- Filter 3 -->
+<div class="toggler-tab" data-toggler-receiver="filter-3">
+  <h3>Filter 3</h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisi
+    eget consectetur consectetur, nisi nisi, nisi nisi, nisi nisi.
+  </p>
+</div>
+```
+
+> This is an example of a filter which has an all button to toggle all buttons. An element with `data-toggler-targets` will have its state toggled as well when you toggle its children. So if all the children's state is true, they will be set to true. If all but one is true, it will be false.
+
+### data-toggler-function
+
+A powerful attribute that will allow you to trigger functions when the toggler is clicked. Simply set the name of the function you want to execute as the value. Functions can be defined in the Toggler class instance in the functions object. Here is an example:
+
+```typescript
+new Toggler({
+  functions: {
+    myFunction: (toggler, ele) => {
+      console.log(toggler, ele);
+    },
+  },
+});
+```
+
+```html
+<button data-toggler="function-example" data-toggler-function="myFunction">
+  Execute my function!
+</button>
+```
+
+## Config
+
+```typescript
+new Toggler({
+  activeClass: "active", // string
+  functions: {
+    exmapleFunction: (toggler, ele) => {},
+  },
+});
+```
+
+### activeClass
+
+Sets the default active class for all togglers.
+
+### functions
+
+If you want to be able to trigger functions with your togglers, you will need to define those functions in the Toggler instance function object. On the element - using the `data-toggler-function` attribute you will be able to assign the function to trigger using its name as the value. Here is an example:
+
+```typescript
+new Toggler({
+  functions: {
+    myFunction: (toggler, ele) => {
+      console.log(toggler, ele);
+    },
+  },
+});
+```
+
+```html
+<button data-toggler="function-example" data-toggler-function="myFunction">
+  Execute my function!
+</button>
+```
+
+## Future features
+
+- Update `data-toggler-targets` so optionally one must remain toggled. At the moment they can all be set to false at the same time.
+- Add a method to register a new toggler. (Useful for if toggler markup is added after the toggler class initialisation).
+- Add a method to refresh all togglers back to their dom state. If no values are passed resync them all, else sync whats passed.

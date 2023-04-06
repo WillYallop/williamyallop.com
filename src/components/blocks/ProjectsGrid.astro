@@ -1,0 +1,203 @@
+---
+import { getCollection } from "astro:content";
+
+/////////////////////////////////
+// COMPONENTS
+////////////////////////////////
+import AspectContainer from "../partials/AspectContainer.astro";
+import { Picture } from "@astrojs/image/components";
+
+/////////////////////////////////
+// DATA
+////////////////////////////////
+const projects = (await getCollection("project")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const filters = [
+  {
+    label: "All",
+    value: "all",
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="m290.8 48.6 78.4 29.7-81.2 31.2-81.2-31.2 78.4-29.7a8 8 0 0 1 5.7 0zM136 92.5v112.2l-3.9 1.3-96 36.4A56 56 0 0 0 0 294.7v119.2a56 56 0 0 0 33.5 51.3l96 42.2a56.2 56.2 0 0 0 45.1 0L288 457.5l113.5 49.9a56.2 56.2 0 0 0 45.1 0l96-42.2a56.1 56.1 0 0 0 33.5-51.3V294.7a56.1 56.1 0 0 0-36.1-52.4l-96-36.4-3.9-1.3V92.5A56.1 56.1 0 0 0 404 40.1L308 3.7a56.5 56.5 0 0 0-39.7 0l-96 36.4A56.1 56.1 0 0 0 136 92.5zm256 118.1-82.4 31.2v-89.2L392 121v89.6zm-237.2 40.3 78.4 29.7-81.2 31.1-81.2-31.1 78.4-29.7a8 8 0 0 1 5.7 0zm18.8 204.4V354.8l82.4-31.6v95.9l-82.4 36.2zm247.6-204.4a8 8 0 0 1 5.7 0l78.4 29.7-81.3 31.1-81.2-31.1 78.4-29.7zm102 170.3-77.6 34.1V354.8l82.4-31.6v90.7a8 8 0 0 1-4.8 7.3z"/></svg>',
+  },
+];
+projects.forEach((project) => {
+  const category = project.data.filterCategory;
+  if (!filters.find((filter) => filter.value === category)) {
+    switch (category) {
+      case "website":
+        filters.push({
+          label: "Website",
+          value: category,
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M64 0A64 64 0 0 0 0 64v288a64 64 0 0 0 64 64h176l-10.7 32H160a32 32 0 1 0 0 64h256a32 32 0 1 0 0-64h-69.3L336 416h176a64 64 0 0 0 64-64V64a64 64 0 0 0-64-64H64zm448 64v288H64V64h448z"/></svg>',
+        });
+        break;
+      case "package":
+        filters.push({
+          label: "Package",
+          value: category,
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M50.7 58.5 0 160h208V32H93.7a48.2 48.2 0 0 0-43 26.5zM240 160h208L397.3 58.5a48.2 48.2 0 0 0-43-26.5H240v128zm208 32H0v224a64 64 0 0 0 64 64h320a64 64 0 0 0 64-64V192z"/></svg>',
+        });
+        break;
+      case "webapp":
+        filters.push({
+          label: "Web app",
+          value: category,
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0h224c35.3 0 64 28.7 64 64v384c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zm208 384a32 32 0 1 0-64 0 32 32 0 1 0 64 0zm80-384H80v320h224V64z"/></svg>',
+        });
+        break;
+      case "wordpress-plugin":
+        filters.push({
+          label: "WordPress plugin",
+          value: category,
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="m61.7 169.4 101.5 278C92.2 413 43.3 340.2 43.3 256c0-30.9 6.6-60.1 18.4-86.6zm337.9 75.9c0-26.3-9.4-44.5-17.5-58.7-10.8-17.5-20.9-32.4-20.9-49.9 0-19.6 14.8-37.8 35.7-37.8.9 0 1.8.1 2.8.2A212.05 212.05 0 0 0 256 43.2c-74.3 0-139.7 38.1-177.8 95.9 5 .2 9.7.3 13.7.3 22.2 0 56.7-2.7 56.7-2.7 11.5-.7 12.8 16.2 1.4 17.5 0 0-11.5 1.3-24.3 2l77.5 230.4L249.8 247l-33.1-90.8c-11.5-.7-22.3-2-22.3-2-11.5-.7-10.1-18.2 1.3-17.5 0 0 35.1 2.7 56 2.7 22.2 0 56.7-2.7 56.7-2.7 11.5-.7 12.8 16.2 1.4 17.5 0 0-11.5 1.3-24.3 2l76.9 228.7 21.2-70.9c9-29.4 16-50.5 16-68.7zm-139.9 29.3-63.8 185.5c19.1 5.6 39.2 8.7 60.1 8.7 24.8 0 48.5-4.3 70.6-12.1-.6-.9-1.1-1.9-1.5-2.9l-65.4-179.2zm183-120.7c.9 6.8 1.4 14 1.4 21.9 0 21.6-4 45.8-16.2 76.2l-65 187.9C426.2 403 468.7 334.5 468.7 256c0-37-9.4-71.8-26-102.1zM504 256c0 136.8-111.3 248-248 248C119.2 504 8 392.7 8 256 8 119.2 119.2 8 256 8c136.7 0 248 111.2 248 248zm-11.4 0c0-130.5-106.2-236.6-236.6-236.6C125.5 19.4 19.4 125.5 19.4 256S125.6 492.6 256 492.6c130.5 0 236.6-106.1 236.6-236.6z"/></svg>',
+        });
+        break;
+      case "boilerplate":
+        filters.push({
+          label: "Boilerplate",
+          value: category,
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 80v48c0 17.7 14.3 32 32 32h64V80a48.01 48.01 0 0 0-96 0zm112-48c10 13.4 16 30 16 48v304c0 35.3 28.7 64 64 64s64-28.7 64-64v-5.3c0-32.4 26.3-58.7 58.7-58.7H480V128c0-53-43-96-96-96H112zm352 448c61.9 0 112-50.1 112-112 0-8.8-7.2-16-16-16H314.7a26.7 26.7 0 0 0-26.7 26.7v5.3c0 53-43 96-96 96h272z"/></svg>',
+        });
+        break;
+      default: {
+        filters.push({
+          label: category,
+          value: category,
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M64 0A64 64 0 0 0 0 64v288a64 64 0 0 0 64 64h176l-10.7 32H160a32 32 0 1 0 0 64h256a32 32 0 1 0 0-64h-69.3L336 416h176a64 64 0 0 0 64-64V64a64 64 0 0 0-64-64H64zm448 64v288H64V64h448z"/></svg>',
+        });
+      }
+    }
+  }
+});
+---
+
+<script>
+  const labels = document.querySelectorAll(
+    ".filter-label"
+  ) as NodeListOf<HTMLLabelElement>;
+  labels.forEach((label) => {
+    label.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        label.click();
+      }
+    });
+  });
+</script>
+
+<div>
+  <!-- Hidden Filter Inputs -->
+  {
+    filters.map((filter) => (
+      <input
+        type="radio"
+        id={`filter-${filter.value}`}
+        name="filter"
+        value={filter.value}
+        class="hidden"
+        checked={filter.value === "all"}
+      />
+    ))
+  }
+
+  <!-- Filter -->
+  <checkbox-toggler
+    class="filter-toggler block relative"
+    input-id="filter-input"
+    target-id="filter-dropdown"
+    close-on-leave
+  >
+    <label
+      class="h-14 w-full text-sm bg-background-secondary flex items-center px-5 md:px-10 group text-typography hover:text-accent duration-200 hover:bg-background-secondary-hover"
+      tabindex="0"
+      role="button"
+      aria-expanded="false"
+      aria-controls="filter-dropdown"
+      for="filter-input"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        class="w-4 h-4 fill-typography mr-2.5 group-hover:fill-accent duration-200"
+        ><path
+          d="M3.9 54.9A39.8 39.8 0 0 1 40 32h432a40 40 0 0 1 30.9 65.4L320 320.9V448a32 32 0 0 1-51.2 25.6l-64-48A31.8 31.8 0 0 1 192 400v-79.1L9 97.3a39.9 39.9 0 0 1-5.1-42.4z"
+        ></path></svg
+      >
+      Filter projects
+    </label>
+    <input type="checkbox" id="filter-input" class="hidden" />
+    <div
+      id="filter-dropdown"
+      class="filter-dropdown invisible opacity-0 absolute top-full left-0 right-0 rounded-b-lg shadow-md bg-background-tertiary pointer-events-none px-2.5 md:px-5 py-5 z-20 transition-all duration-200 -translate-y-3"
+    >
+      <ol>
+        {
+          filters.map((filter) => (
+            <li class="mb-1 last:mb-0">
+              <label
+                class="filter-label relative bg-background-tertiary hover:bg-background-secondary-hover flex items-center px-2.5 md:px-5 py-2 rounded-md cursor-pointer after:absolute after:right-5 after:rounded-full after:top-1/2 after:-translate-y-1/2 after:h-2 after:w-2 after:block after:bg-background-secondary after:duration-200 after:transition-colors duration-200 transition-colors"
+                data-filter={filter.value}
+                for={`filter-${filter.value}`}
+                tabindex="0"
+                aria-label={`Filter by ${filter.label}`}
+              >
+                <span class="icon-con bg-background-secondary h-6 w-6 rounded-md flex items-center justify-center mr-2">
+                  <span
+                    class="w-3 h-3 fill-typography duration-200 transition-colors"
+                    set:html={filter.icon}
+                  />
+                </span>
+
+                {filter.label}
+              </label>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </checkbox-toggler>
+
+  <!-- Body -->
+  <div class="filter-results p-5 md:p-10 overflow-auto h-contentoffset">
+    <!-- Projects -->
+    <ul class="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
+      {
+        projects.map((project, index) => (
+          <li
+            class="filter-item hidden"
+            data-filter={project.data.filterCategory}
+          >
+            <animate-container
+              animate="true"
+              on="visible"
+              reset="true"
+              delay={index * 50}
+              type="fade-in"
+            >
+              <AspectContainer ratio={"16:9"}>
+                <div class="project-card h-full bg-background-secondary hover:bg-accent rounded-lg duration-200">
+                  <span class="project-card__left" />
+                  <span class="project-card__bottom" />
+                  <a
+                    href={`/project/${project.slug}/`}
+                    class="project-card__img-bg bg-background-secondary h-full flex items-center justify-center rounded-lg overflow-hidden"
+                  >
+                    <Picture
+                      src={project.data.thumbnail}
+                      formats={["avif", "webp", "jpeg"]}
+                      aspectRatio={"16:9"}
+                      alt={project.data.title}
+                      widths={[600]}
+                      sizes={"(min-width: 1024px) 400px, 100vw"}
+                      class="object-cover w-full h-full"
+                    />
+                  </a>
+                </div>
+              </AspectContainer>
+            </animate-container>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

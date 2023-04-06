@@ -1,0 +1,86 @@
+---
+/////////////////////////////////
+// COMPONENTS
+////////////////////////////////
+import AspectContainer from "../partials/AspectContainer.astro";
+import { Picture } from "@astrojs/image/components";
+
+interface Props {
+  slides: {
+    title: string;
+    type: "image";
+    image: string;
+  }[];
+}
+
+const { slides } = Astro.props;
+---
+
+<carousel-container autoplay="true" duration="7000" class="block relative">
+  <carousel-track>
+    {
+      slides.map((slide, index) => (
+        <carousel-slide
+          id={`slide-${index}`}
+          class="bg-slate-600 flex items-center justify-center p-5 pb-20 md:px-desktop relative select-none"
+        >
+          <div class="absolute top-0 bottom-0 left-0 right-0 overflow-hidden z-0">
+            <div class="blur w-full h-full relative after:absolute after:inset-0 after:bg-black after:bg-opacity-80 scale-110">
+              <Picture
+                src={slide.image}
+                formats={["avif", "webp", "jpeg"]}
+                aspectRatio={"16:9"}
+                alt={slide.title}
+                widths={[500]}
+                loading={"eager"}
+                sizes={"(min-width: 1024px) 400px, 100vw"}
+                class="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+          <div class="w-full md:max-w-mediafit h-md:max-w-medialarge z-10 relative select-none group">
+            <figure class="overflow-hidden rounded-lg">
+              <AspectContainer ratio={"16:9"}>
+                <Picture
+                  src={slide.image}
+                  formats={["avif", "webp", "jpeg"]}
+                  aspectRatio={"16:9"}
+                  alt={slide.title}
+                  widths={[1400]}
+                  loading={"eager"}
+                  sizes={"(min-width: 1024px) 400px, 100vw"}
+                  class="object-cover w-full h-full rounded-lg pointer-events-none"
+                />
+              </AspectContainer>
+              <figcaption class="bg-background absolute left-2.5 bottom-2.5 rounded-lg text-typography text-sm p-2.5 px-5">
+                {slide.title}
+              </figcaption>
+            </figure>
+          </div>
+        </carousel-slide>
+      ))
+    }
+  </carousel-track>
+  <carousel-pagination></carousel-pagination>
+  <noscript>
+    <nav class="cp-con">
+      <ul role="tablist" aria-label="Select a slide to show">
+        {
+          slides.map((slide, index) => (
+            <li class="cp-con__li">
+              <a
+                class="cp-con__li__btn"
+                href={`#slide-${index}`}
+                aria-label={`Go to slide ${index + 1}`}
+                role="tab"
+              >
+                <span class="sr-only">Go to slide {index + 1}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </noscript>
+  <carousel-controls></carousel-controls>
+</carousel-container>

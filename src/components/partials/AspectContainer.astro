@@ -1,0 +1,22 @@
+---
+interface Props {
+  ratio: "16:9";
+}
+
+const { ratio } = Astro.props;
+
+let ratioClass = "";
+switch (ratio) {
+  case "16:9":
+    ratioClass = "pb-[56.25%]";
+    break;
+  default:
+    ratioClass = "pb-[56.25%]";
+}
+---
+
+<div class={`relative w-full ${ratioClass}`}>
+  <div class="absolute inset-0">
+    <slot />
+  </div>
+</div>

@@ -1,0 +1,52 @@
+---
+title: "Cover Maker"
+description: "Cover maker is a graphic design tool for making playlist cover artwork. It has templates, media, shapes and text and allows you to export as an image or JSON."
+filterCategory: "webapp"
+order: 3
+featured: true
+technologies: ["Node", "JS", "SCSS", "Webpack"]
+
+website: "https://cover-maker.williamyallop.com"
+npm: ""
+github: "https://github.com/WillYallop/cover-maker"
+
+thumbnail: "/cover-maker/thumbnail.png"
+projectSlider: "/cover-maker/slide1.png"
+slides:
+  [
+    {
+      title: "Branded screenshot",
+      type: "image",
+      image: "/cover-maker/slide1.png",
+    },
+    {
+      title: "Editing preview",
+      type: "image",
+      image: "/cover-maker/slide2.jpg",
+    },
+    {
+      title: "Saving and exporting",
+      type: "image",
+      image: "/cover-maker/slide3.jpg",
+    },
+    {
+      title: "Loading a saved project",
+      type: "image",
+      image: "/cover-maker/slide4.jpg",
+    },
+  ]
+---
+
+## Introduction
+
+The Cover Maker tool was created for a project called "playlisttools". This was supposed to be a one-stop shop for managing Spotify playlists and covered features from updating their details, to generating new playlists entirely.
+
+With templates, a Pexels API integration, shapes, background colours and gradients, Cover Maker is a complete graphical editor tool for creating playlist cover art. It allows users to export their artwork in formats and resolutions recommended by Spotify and Apple Music, along with the export to JSON option which allows for the project to be opened up again at a later date.
+
+I created this early on in my JS journey and while proud of the outcome, especially considering it took only a day to build, its one of those projects that I cringe at when looking back at the code. That being said though, I learnt a LOT doing it.
+
+## What could have been done better?
+
+If I were to remake this project with the skills and knowledge I have now, there are a few things I would change. Most importantly, I would be using Typescript instead of vanilla JS for its type safety and intellisense. Apart from general code quality, better use of classes etc, the biggest change would be not making the project into an npm package.
+
+The reason I did this originally was that I wanted to embed the cover maker onto two separate sites while allowing updates to be made regardless of the site they were on. However, coming at this from my current knowledge, this just seems to complicate things unnecessarily. Instead, using npm workspaces or a build system like [Turborepo](https://turborepo.org/) would allow me to achieve the same while keeping everything in one repository.

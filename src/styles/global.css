@@ -1,0 +1,310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --header-height: 100px;
+  --strip-height: 56px;
+  --info-height: 300px;
+
+  --top-offset: calc(var(--header-height) + var(--strip-height));
+  --total-height: calc(
+    var(--header-height) + var(--strip-height) + var(--info-height)
+  );
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --header-height: 80px;
+    --strip-height: 50px;
+    --info-height: 300px;
+  }
+}
+
+@layer components {
+  body {
+    font-family: system-ui, sans-serif;
+  }
+
+  /* Wrapper */
+  .wrapper-l {
+    @apply px-5 md:px-mobile xl:px-desktop;
+  }
+
+  /* Typography */
+  h1 {
+    @apply text-3xl md:text-5xl font-bold;
+  }
+  h2 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+  p {
+    @apply text-lg;
+  }
+
+  .typography h1 {
+    @apply my-5 first:mt-0 last:mt-0;
+  }
+  .typography h2 {
+    @apply my-5 first:mt-0 last:mt-0;
+  }
+  .typography p {
+    @apply my-2 first:mt-0 last:mt-0 leading-relaxed;
+  }
+  .typography li,
+  .typography ul,
+  .typography ol,
+  .typography a,
+  .typography blockquote,
+  .typography pre,
+  .typography code,
+  .typography h1,
+  .typography h2,
+  .typography h3 {
+    @apply !text-typography;
+  }
+
+  /* Header sidebar drawer */
+  #main-sidebar-input:checked ~ #main-sidebar {
+    @apply visible translate-x-0;
+  }
+
+  /* Carousel */
+  carousel-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  carousel-track {
+    height: 100%;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overflow: auto;
+    display: flex;
+  }
+  carousel-slide {
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  /* Scrollbar Style */
+  carousel-track::-webkit-scrollbar {
+    @apply h-2;
+  }
+  carousel-track::-webkit-scrollbar-track {
+    @apply bg-background-secondary;
+  }
+  carousel-track::-webkit-scrollbar-thumb {
+    @apply bg-accent hover:bg-accent-hover duration-200 rounded-md;
+  }
+
+  /* Carousel Controls */
+  .cc-con {
+    @apply absolute bottom-0 transform translate-y-1/2 right-2.5 md:right-10 z-10 flex;
+  }
+  .cc-con__btn {
+    @apply bg-accent h-10 md:h-14 w-10 md:w-14 mr-2.5 md:ml-5 md:mr-0 text-background flex items-center justify-center hover:bg-accent-hover transition-colors duration-200 rounded-md shadow-md;
+  }
+  .cc-con__btn svg {
+    @apply w-5 h-5 fill-background;
+  }
+  /* Carousel Pagination */
+  .cp-con {
+    @apply absolute left-5 md:left-10 bottom-10 flex;
+  }
+  .cp-con ul {
+    @apply flex;
+  }
+  .cp-con__li__btn {
+    @apply block bg-white w-6 h-3 mr-2 rounded-md hover:bg-accent transition-all duration-200;
+  }
+  .cp-con__li__btn.active {
+    @apply bg-accent w-14;
+  }
+
+  /* Filter Dropdown */
+  #filter-input:checked + .filter-dropdown {
+    @apply opacity-100 pointer-events-auto translate-y-0 visible;
+  }
+
+  /* Filter labels */
+  [value="all"]:checked ~ .filter-toggler .filter-label::after,
+  [value="website"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="website"]::after,
+  [value="package"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="package"]::after,
+  [value="webapp"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="webapp"]::after,
+  [value="wordpress-plugin"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="wordpress-plugin"]::after,
+  [value="boilerplate"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="boilerplate"]::after {
+    @apply bg-accent;
+  }
+
+  [value="all"]:checked ~ .filter-toggler .filter-label .icon-con,
+  [value="website"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="website"]
+    .icon-con,
+  [value="package"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="package"]
+    .icon-con,
+  [value="webapp"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="webapp"]
+    .icon-con,
+  [value="wordpress-plugin"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="wordpress-plugin"]
+    .icon-con,
+  [value="boilerplate"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="boilerplate"]
+    .icon-con {
+    @apply bg-accent fill-background;
+  }
+  [value="all"]:checked ~ .filter-toggler .filter-label .icon-con svg,
+  [value="website"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="website"]
+    .icon-con
+    svg,
+  [value="package"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="package"]
+    .icon-con
+    svg,
+  [value="webapp"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="webapp"]
+    .icon-con
+    svg,
+  [value="wordpress-plugin"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="wordpress-plugin"]
+    .icon-con
+    svg,
+  [value="boilerplate"]:checked
+    ~ .filter-toggler
+    .filter-label[data-filter="boilerplate"]
+    .icon-con
+    svg {
+    @apply fill-background;
+  }
+
+  /* Filter results */
+  [value="all"]:checked ~ .filter-results .filter-item,
+  [value="website"]:checked
+    ~ .filter-results
+    .filter-item[data-filter="website"],
+  [value="package"]:checked
+    ~ .filter-results
+    .filter-item[data-filter="package"],
+  [value="webapp"]:checked ~ .filter-results .filter-item[data-filter="webapp"],
+  [value="wordpress-plugin"]:checked
+    ~ .filter-results
+    .filter-item[data-filter="wordpress-plugin"],
+  [value="boilerplate"]:checked
+    ~ .filter-results
+    .filter-item[data-filter="boilerplate"] {
+    @apply block;
+  }
+
+  /* Project Card */
+  .project-card {
+    position: relative;
+  }
+  .project-card:hover .project-card__left {
+    @apply opacity-100;
+  }
+  .project-card__left {
+    @apply block absolute left-0 top-[6px] bottom-0 w-[5px] bg-accent z-0 opacity-0 transition-all duration-200;
+  }
+  .project-card:hover .project-card__left::after {
+    @apply h-2.5;
+  }
+  .project-card__left::after {
+    content: "";
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%);
+    @apply absolute bottom-full left-0 h-0 w-2.5 block bg-accent duration-200 transition-all;
+  }
+
+  .project-card:hover .project-card__bottom {
+    @apply opacity-100;
+  }
+  .project-card__bottom {
+    @apply block absolute left-0 right-[6px] bottom-0 h-[5px] bg-accent z-0 opacity-0 transition-all duration-200;
+  }
+  .project-card:hover .project-card__bottom::after {
+    @apply w-2.5;
+  }
+  .project-card__bottom::after {
+    content: "";
+    clip-path: polygon(0 0, 100% 0, 0% 100%);
+    @apply absolute left-full bottom-0 w-0 h-2.5 block bg-accent duration-200 transition-all;
+  }
+
+  .project-card__img-bg {
+    @apply transition-transform duration-200 z-10 relative;
+  }
+  .project-card:hover .project-card__img-bg {
+    transform: translate3d(5px, -5px, 0px);
+  }
+}
+
+animate-container {
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  backface-visibility: hidden;
+  display: block;
+  position: relative;
+}
+animate-container[animate="true"][type="fade-in"] {
+  animation-name: fade-in;
+}
+animate-container[animate="false"][type="fade-in"] {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  animate-container[animate="true"][type="fade-in"] {
+    animation-name: fade-in-reduced;
+  }
+  animate-container[animate="false"][type="fade-in"] {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fade-in-reduced {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

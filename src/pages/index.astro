@@ -1,0 +1,59 @@
+---
+import { GITHUB_URL, LINKEDIN_URL } from "../constants";
+
+/////////////////////////////////
+// COMPONENTS
+////////////////////////////////
+import MainLayout from "../layouts/Main.astro";
+import ProjectCarousel from "../components/blocks/ProjectCarousel.astro";
+import ProjectsGrid from "../components/blocks/ProjectsGrid.astro";
+import SocialLink from "../components/partials/SocialLink.astro";
+---
+
+<MainLayout
+  type="page"
+  title={"Portfolio | William Yallop"}
+  description={`Welcome to my portfolio. I'm Will Yallop - a fullstack web developer who strives to create snappy, scalable, and accessible web experiences for everyone.`}
+  ogTitle={""}
+  ogDescription={""}
+  twitterTitle={""}
+  twitterDescription={""}
+  breadcrumbs={[
+    {
+      text: "Projects",
+      href: "/",
+    },
+  ]}
+>
+  <ProjectCarousel slot="media" />
+  <!-- Content -->
+  <animate-container
+    slot="info"
+    class="typography py-10 md:py-0"
+    animate="true"
+    on="visible"
+    reset="true"
+    type="fade-in"
+  >
+    <h1>My Portfolio</h1>
+    <p class="text-typography mt-5 max-w-xl">
+      Magna enim elit in eu adipisicing. Esse mollit nisi elit tempor sit.
+      Mollit in culpa pariatur enim quis consectetur. Nulla elit aliquip dolor
+      amet enim enim mollit. Laboris pariatur aute ipsum sit anim.
+    </p>
+    <ul class="flex mt-5">
+      <li class="mr-2.5">
+        <SocialLink href={GITHUB_URL} icon="github" title="Visit my Github" />
+      </li>
+      <li>
+        <SocialLink
+          href={LINKEDIN_URL}
+          icon="linkedin"
+          title="Visit my LinkedIn"
+        />
+      </li>
+    </ul>
+  </animate-container>
+  <!-- Right col -->
+  <ProjectsGrid slot="content" />
+</MainLayout>

@@ -1,5 +1,0 @@
-@use "../settings/vars" as *;
-
-@mixin animate {
-  transition: $transition_time $transition_type;
-}

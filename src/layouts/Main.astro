@@ -1,0 +1,184 @@
+---
+import "../styles/global.css";
+import { SITE_URL, EMAIL, SITE_DESCRIPTION } from "../constants";
+
+/////////////////////////////////
+// ASSETS
+////////////////////////////////
+import METAIMAGE from "../assets/images/metaimage.jpg?url";
+import APPLE_TOUCH_ICON from "../assets/images/apple-touch-icon.png?url";
+import FAVICON_32X32 from "../assets/images/favicon-32x32.png?url";
+import FAVICON_16X16 from "../assets/images/favicon-16x16.png?url";
+
+/////////////////////////////////
+// COMPONENTS
+////////////////////////////////
+import Header from "../components/Header.astro";
+import Breadcrumb from "../components/partials/Breadcrumb.astro";
+
+/////////////////////////////////
+// DATA
+////////////////////////////////
+const SCHEMA = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "William Yallop",
+  url: SITE_URL,
+  sameAs: ["https://www.linkedin.com/in/william-yallop-633429184/"],
+  jobTitle: "Web Developer",
+  worksFor: {
+    "@type": "Organization",
+    name: "GRIT Digital",
+    url: "https://gritdigital.co.uk/",
+  },
+  image: "https://williamyallop.com/assets/images/william_yallop.png",
+  description: SITE_DESCRIPTION,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Norwich",
+    addressRegion: "Norfolk",
+    postalCode: "NR7 0RY",
+    streetAddress: "3 Montrose Court",
+  },
+  email: EMAIL,
+  telephone: "+44 7714 353562",
+});
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+interface Props {
+  type: "page" | "project";
+  title: string;
+  description: string;
+  ogTitle: string;
+  ogDescription: string;
+  twitterTitle: string;
+  twitterDescription: string;
+  metaImage?: string;
+  breadcrumbs: Array<{
+    href: string;
+    text: string;
+    current?: boolean;
+  }>;
+}
+
+const {
+  type,
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  twitterTitle,
+  twitterDescription,
+  metaImage,
+  breadcrumbs,
+} = Astro.props;
+---
+
+<script>
+  import {
+    Carousel,
+    CheckboxToggler,
+    Animate,
+  } from "@functionalities/webcomponents";
+
+  customElements.define("checkbox-toggler", CheckboxToggler);
+  customElements.define("animate-container", Animate);
+
+  customElements.define("carousel-container", Carousel.Container);
+  customElements.define("carousel-track", Carousel.Track);
+  customElements.define("carousel-slide", Carousel.Slide);
+  customElements.define("carousel-controls", Carousel.Controls);
+  customElements.define("carousel-pagination", Carousel.Pagination);
+</script>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="author" content="William Yallop" />
+    <link rel="apple-touch-icon" sizes="180x180" href={APPLE_TOUCH_ICON} />
+    <link rel="icon" type="image/png" sizes="32x32" href={FAVICON_32X32} />
+    <link rel="icon" type="image/png" sizes="16x16" href={FAVICON_16X16} />
+    <meta name="msapplication-TileColor" content="#0E1428" />
+    <meta
+      name="trustpilot-one-time-domain-verification-id"
+      content="476ecccd-155d-43f0-9694-afc8949543fd"
+    />
+    <meta name="theme-color" content="#0E1428" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- OG Meta -->
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content={metaImage || METAIMAGE} />
+
+    <!-- Twitter Meta -->
+    <meta property="twitter:title" content={twitterTitle} />
+    <meta property="twitter:description" content={twitterDescription} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content={metaImage || METAIMAGE} />
+    <meta name="twitter:domain" content={Astro.url} />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta name="twitter:image:alt" content="William Yallop" />
+    <meta name="twitter:image:width" content="1200" />
+    <meta name="twitter:image:height" content="627" />
+    <meta name="twitter:image:type" content="image/png" />
+    <meta name="twitter:image:src" content={metaImage || METAIMAGE} />
+
+    <!-- RSS -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="/rss.xml"
+    />
+    <!-- Scripts -->
+    <script type="application/ld+json" set:html={SCHEMA}></script>
+    <slot name="head" />
+  </head>
+  <body class="bg-background text-typography md:overflow-hidden">
+    <Header type={type}>
+      <slot name="content" />
+    </Header>
+    <main class="h-main flex flex-wrap pt-headerH md:pt-0">
+      <!-- Left Col -->
+      <div
+        class="w-full md:w-6/10 md:h-full flex flex-col border-r border-border"
+      >
+        <div>
+          <Breadcrumb links={breadcrumbs} />
+          <!-- Media -->
+          <div class="md:h-media w-full">
+            <slot name="media" />
+          </div>
+        </div>
+        <!-- Info Container -->
+        <div
+          class={`md:h-info w-full flex border-t border-border ${
+            type === "page" ? "h-full" : ""
+          }`}
+        >
+          <div class="h-full w-full flex items-center wrapper-l">
+            <slot name="info" />
+          </div>
+        </div>
+      </div>
+      <!-- Right col (populated by header slot) -->
+      {
+        type === "project" && (
+          <div class="w-full md:w-4/10 h-full">
+            <slot name="content" />
+          </div>
+        )
+      }
+    </main>
+  </body>
+</html>

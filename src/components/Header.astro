@@ -1,0 +1,64 @@
+---
+import PROFILE_IMG from "../assets/images/profile-picture.jpg?url";
+
+interface Props {
+  type: "page" | "project";
+}
+const { type } = Astro.props;
+---
+
+<header
+  class="bg-background h-header border-b border-border flex items-center z-50 md:relative justify-between pl-5 xl:px-desktop fixed top-0 left-0 right-0"
+>
+  <div class="flex items-center">
+    <div class="h-10 md:h-14 w-10 md:w-14 rounded-full bg-background-secondary">
+      <img
+        src={PROFILE_IMG}
+        alt="Profile picture"
+        class="h-full w-full rounded-full object-cover"
+      />
+    </div>
+    <div class="pl-3 flex flex-col">
+      <span class="text-accent font-bold text-sm md:text-base"
+        >William Yallop</span
+      >
+      <span class="text-typography text-sm">Frontend Developer</span>
+    </div>
+  </div>
+
+  <!-- Sidebar dropdown -->
+  {
+    type === "page" && (
+      <checkbox-toggler
+        class="block relative h-full"
+        input-id="main-sidebar-input"
+        target-id="main-sidebar"
+      >
+        <label
+          class="flex md:hidden h-full items-center border-l border-border px-5 text-sm"
+          tabindex="0"
+          role="button"
+          aria-expanded="false"
+          aria-controls="main-sidebar"
+          for="main-sidebar-input"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="w-4 h-4 fill-typography mr-2.5 group-hover:fill-accent duration-200"
+          >
+            <path d="M40 48c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zm152 16c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zm24 136c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24H40z" />
+          </svg>
+          Projects
+        </label>
+        <input type="checkbox" id="main-sidebar-input" class="hidden" />
+        <div
+          id="main-sidebar"
+          class="invisible md:visible w-full md:w-4/10 h-full fixed top-headerH right-0 bottom-0 bg-background z-10 transform-gpu translate-x-full md:translate-x-0 transition-all"
+        >
+          <slot />
+        </div>
+      </checkbox-toggler>
+    )
+  }
+</header>
