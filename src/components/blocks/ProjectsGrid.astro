@@ -76,6 +76,14 @@ projects.forEach((project) => {
     ".filter-label"
   ) as NodeListOf<HTMLLabelElement>;
   labels.forEach((label) => {
+    label.addEventListener("click", (e) => {
+      e.preventDefault();
+      const forval = label.getAttribute("for") || "";
+      const input = document.getElementById(forval) as HTMLInputElement;
+      if (input) {
+        input.checked = !input.checked;
+      }
+    });
     label.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
