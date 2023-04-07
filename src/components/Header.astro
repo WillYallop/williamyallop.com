@@ -1,5 +1,6 @@
 ---
-import PROFILE_IMG from "../assets/images/profile-picture.jpg?url";
+import PROFILE_IMG from "../assets/images/profile-picture.jpg";
+import { Image } from "@astrojs/image/components";
 
 interface Props {
   type: "page" | "project";
@@ -12,7 +13,9 @@ const { type } = Astro.props;
 >
   <div class="flex items-center">
     <div class="h-10 md:h-14 w-10 md:w-14 rounded-full bg-background-secondary">
-      <img
+      <Image
+        width={60}
+        height={60}
         src={PROFILE_IMG}
         alt="Profile picture"
         class="h-full w-full rounded-full object-cover"
@@ -22,7 +25,7 @@ const { type } = Astro.props;
       <span class="text-accent font-bold text-sm md:text-base"
         >William Yallop</span
       >
-      <span class="text-typography text-sm">Frontend Developer</span>
+      <span class="text-typography text-sm">Fullstack Developer</span>
     </div>
   </div>
 
