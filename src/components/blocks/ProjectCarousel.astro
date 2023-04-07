@@ -23,7 +23,7 @@ projects = projects.filter((project) => project.data.featured);
       projects.map((project, index) => (
         <carousel-slide
           id={`slide-${index}`}
-          class="bg-slate-600 flex items-center justify-center p-5 pb-20 md:px-desktop relative select-none"
+          class="w-full h-full flex items-center justify-center p-5 pb-20 md:px-desktop overflow-hidden select-none relative"
         >
           <div class="absolute top-0 bottom-0 left-0 right-0 overflow-hidden z-0">
             <div class="blur w-full h-full relative after:absolute after:inset-0 after:bg-black after:bg-opacity-80 scale-110">
@@ -39,27 +39,36 @@ projects = projects.filter((project) => project.data.featured);
               />
             </div>
           </div>
+
           <a
             href={`/project/${project.slug}/`}
             class="w-full md:max-w-mediafit h-md:max-w-medialarge z-10 relative select-none group"
           >
-            <figure class="overflow-hidden rounded-lg">
-              <AspectContainer ratio={"16:9"}>
-                <Picture
-                  src={project.data.projectSlider}
-                  formats={["avif", "webp", "jpeg"]}
-                  aspectRatio={"16:9"}
-                  alt={project.data.title}
-                  widths={[1000]}
-                  loading={"eager"}
-                  sizes={"(min-width: 1024px) 400px, 100vw"}
-                  class="object-cover w-full h-full rounded-lg pointer-events-none group-hover:scale-105 duration-200"
-                />
-              </AspectContainer>
-              <figcaption class="bg-background absolute left-2.5 bottom-2.5 rounded-lg text-typography text-sm p-2.5 px-5">
-                {project.data.title}
-              </figcaption>
-            </figure>
+            <animate-container
+              animate="true"
+              on="visible"
+              reset="true"
+              delay={index * 50}
+              type="fade-in"
+            >
+              <figure class="overflow-hidden rounded-lg">
+                <AspectContainer ratio={"16:9"}>
+                  <Picture
+                    src={project.data.projectSlider}
+                    formats={["avif", "webp", "jpeg"]}
+                    aspectRatio={"16:9"}
+                    alt={project.data.title}
+                    widths={[1000]}
+                    loading={"eager"}
+                    sizes={"(min-width: 1024px) 400px, 100vw"}
+                    class="object-cover w-full h-full rounded-lg pointer-events-none group-hover:scale-105 duration-200"
+                  />
+                </AspectContainer>
+                <figcaption class="bg-background absolute left-2.5 bottom-2.5 rounded-lg text-typography text-sm p-2.5 px-5">
+                  {project.data.title}
+                </figcaption>
+              </figure>
+            </animate-container>
           </a>
         </carousel-slide>
       ))

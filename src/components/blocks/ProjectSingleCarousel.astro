@@ -39,23 +39,31 @@ const { slides } = Astro.props;
             </div>
           </div>
           <div class="w-full md:max-w-mediafit h-md:max-w-medialarge z-10 relative select-none group">
-            <figure class="overflow-hidden rounded-lg">
-              <AspectContainer ratio={"16:9"}>
-                <Picture
-                  src={slide.image}
-                  formats={["avif", "webp", "jpeg"]}
-                  aspectRatio={"16:9"}
-                  alt={slide.title}
-                  widths={[1400]}
-                  loading={"eager"}
-                  sizes={"(min-width: 1024px) 400px, 100vw"}
-                  class="object-cover w-full h-full rounded-lg pointer-events-none"
-                />
-              </AspectContainer>
-              <figcaption class="bg-background absolute left-2.5 bottom-2.5 rounded-lg text-typography text-sm p-2.5 px-5">
-                {slide.title}
-              </figcaption>
-            </figure>
+            <animate-container
+              animate="true"
+              on="visible"
+              reset="true"
+              delay={index * 50}
+              type="fade-in"
+            >
+              <figure class="overflow-hidden rounded-lg">
+                <AspectContainer ratio={"16:9"}>
+                  <Picture
+                    src={slide.image}
+                    formats={["avif", "webp", "jpeg"]}
+                    aspectRatio={"16:9"}
+                    alt={slide.title}
+                    widths={[1400]}
+                    loading={"eager"}
+                    sizes={"(min-width: 1024px) 400px, 100vw"}
+                    class="object-cover w-full h-full rounded-lg pointer-events-none"
+                  />
+                </AspectContainer>
+                <figcaption class="bg-background absolute left-2.5 bottom-2.5 rounded-lg text-typography text-sm p-2.5 px-5">
+                  {slide.title}
+                </figcaption>
+              </figure>
+            </animate-container>
           </div>
         </carousel-slide>
       ))

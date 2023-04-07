@@ -281,6 +281,13 @@ animate-container[animate="false"][type="fade-in"] {
   opacity: 0;
   transform: translate3d(0, 10px, 0);
 }
+animate-container[animate="true"][type="fade"] {
+  animation-name: fade;
+}
+animate-container[animate="false"][type="fade"] {
+  opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   animate-container[animate="true"][type="fade-in"] {
     animation-name: fade-in-reduced;
@@ -301,6 +308,14 @@ animate-container[animate="false"][type="fade-in"] {
   }
 }
 @keyframes fade-in-reduced {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
   0% {
     opacity: 0;
   }
