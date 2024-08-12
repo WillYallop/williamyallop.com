@@ -111,13 +111,6 @@ declare module 'astro:content' {
   collection: "project",
   data: any
 } & { render(): Render[".mdx"] },
-"bp-deploy.mdx": {
-  id: "bp-deploy.mdx",
-  slug: "bp-deploy",
-  body: string,
-  collection: "project",
-  data: any
-} & { render(): Render[".mdx"] },
 "cover-maker.mdx": {
   id: "cover-maker.mdx",
   slug: "cover-maker",
@@ -139,23 +132,9 @@ declare module 'astro:content' {
   collection: "project",
   data: any
 } & { render(): Render[".mdx"] },
-"functionalities-mediakit.mdx": {
-  id: "functionalities-mediakit.mdx",
-  slug: "functionalities-mediakit",
-  body: string,
-  collection: "project",
-  data: any
-} & { render(): Render[".mdx"] },
-"functionalities-toggler.mdx": {
-  id: "functionalities-toggler.mdx",
-  slug: "functionalities-toggler",
-  body: string,
-  collection: "project",
-  data: any
-} & { render(): Render[".mdx"] },
-"functionalities-web-components.mdx": {
-  id: "functionalities-web-components.mdx",
-  slug: "functionalities-web-components",
+"lucid.mdx": {
+  id: "lucid.mdx",
+  slug: "lucid",
   body: string,
   collection: "project",
   data: any

@@ -1,0 +1,101 @@
+---
+title: "Lucid CMS"
+description: "Lucid is a highly extensible, open-source headless CMS designed to adapt to your content needs."
+filterCategory: "website"
+order: 0
+featured: true
+technologies: ["Fastify", "Typescript", "SolidJS", "PostgreSQL", "SQLite", "TailwindCSS"]
+
+website: "https://lucidcms.io"
+npm: "https://www.npmjs.com/package/@lucidcms/core"
+github: "https://github.com/ProtoDigitalUK/lucid"
+
+thumbnail: "/lucid/thumbnail.jpg"
+projectSlider: "/lucid/thumbnail.jpg"
+slides:
+  [
+    { title: "Lucid CMS", type: "image", image: "/lucid/thumbnail.jpg" },
+    { title: "Documentation", type: "image", image: "/lucid/slide-1.jpg" },
+    { title: "Getting Started", type: "image", image: "/lucid/slide-2.jpg" },
+    { title: "GitHub", type: "image", image: "/lucid/slide-3.jpg" },
+  ]
+---
+
+## Introduction
+
+Lucid is a highly extensible, open-source headless CMS designed to adapt to your content needs. At its core it features powerful collection and brick builders, these allow you to define the structure of your data and customise the document builder experience for you clients or content editors alike. It offers a range of first party plugins, enabling you to extend collections, store media in S3, send emails via Nodemailer etc. and if what you're looking for is more bespoke, you can even write your own.
+
+This project is written fully in Typescript, with the backend utilising Fastify and the frontend written in SolidJS. It is still in alpha and under heavy development and so currently its not recommended to use in any serious capacity other than playing around with it, though I plan to release a beta soon.
+
+## Collections
+
+Collections in Lucid allow you to define a type content. Within these collections exist documents. A collection can either contain multiple, or just a single document depending on the mode flag. Collections give you the flexibility to add fields, builder bricks and fixed bricks against them. The custom fields these contain will then be available on the document page builder.
+
+```typescript
+import { CollectionBuilder } from "@lucidcms/core";
+import Banner from "./bricks/banner.js";
+import SEO from "./bricks/seo.js";
+
+export const PageCollection = new CollectionBuilder("page", {
+  mode: "multiple",
+  title: "Pages",
+  singular: "Page",
+  description: "Pages are used to create static content on your website.",
+  translations: true,
+  bricks: {
+    fixed: [SEO],
+    builder: [Banner],
+  },
+})
+  .addText(
+    "pageTitle",
+    {
+      labels: {
+        title: {
+          en: "Page title",
+        },
+        description: "The title of the page.",
+      },
+      hidden: false,
+      disabled: false,
+    },
+    {
+      list: true,
+      filterable: true,
+    }
+  )
+```
+
+## Bricks
+
+Bricks are a reusable way of defining groups of custom fields. In other systems, you may call these blocks or components.
+
+```typescript
+import { BrickBuilder } from "@lucidcms/core";
+
+const Banner = new BrickBuilder("banner", {
+  title: {
+    en: "Banner",
+  },
+  description: "A banner with a title and intro text",
+  preview: {
+    image: "https://placehold.co/600x400",
+  },
+})
+  .addTab("contentTab", {
+    labels: {
+      title: "Content",
+    },
+  })
+  .addText("title", {
+    labels: {
+      description: "The title of the banner. This is displayed as an H1 tag.",
+    },
+    validation: {
+      required: true,
+    },
+  })
+  .addWysiwyg("intro");
+
+export default Banner;
+```
